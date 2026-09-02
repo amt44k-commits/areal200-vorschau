@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Objektdetail - AREAL 200 Sollenau</title>
+<meta name="description" content="Objektdetails, Ausstattung, Eckdaten und Anfrage fuer ein Objekt im Areal 200 Sollenau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AREAL 200 - Design-Grundlage fuer alle Seitenvorlagen
+   Farben und Masse aus der Marke (Logo-Orange), Outfit + Inter
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* Marke */
+  --o1:#F7A01D;   /* hell, Akzent auf Dunkel */
+  --o2:#EF6C24;   /* Orange, Interaktion */
+  --o3:#E2491B;   /* Rot-Orange, Tiefe */
+  --grad:linear-gradient(95deg,#F7A01D 0%,#EF6C24 48%,#E2491B 100%);
+  /* Flaechen */
+  --ink:#14161b;
+  --ink2:#1d2026;
+  --paper:#f6f4f1;
+  --paper2:#ffffff;
+  --muted:#6b7078;
+  --text2:#4a4f57;
+  --line:rgba(20,22,27,.10);
+  --line-d:rgba(255,255,255,.10);
+  /* Tiefe */
+  --shadow:0 22px 60px -24px rgba(20,22,27,.35);
+  --shadow-o:0 12px 30px -10px rgba(226,73,27,.6);
+  /* Radien */
+  --r-s:12px; --r-m:18px; --r-l:22px; --r-pill:50px;
+  /* Raster */
+  --wrap:1180px;
+  --sec:clamp(80px,11vw,130px);
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;line-height:1.05;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+section{position:relative}
+.wrap{width:min(var(--wrap),92vw);margin:0 auto}
+.sec{padding:var(--sec) 0}
+
+/* --- Typo-Bausteine --- */
+.eyebrow{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--o2);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--grad)}
+.gradtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.shead{max-width:680px}
+.shead h2{font-size:clamp(30px,4.6vw,52px);font-weight:800;margin:16px 0 14px}
+.shead p{color:var(--muted);font-size:17px}
+
+/* --- Buttons --- */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;padding:15px 26px;border-radius:var(--r-pill);text-decoration:none;cursor:pointer;border:none;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .25s;white-space:nowrap}
+.btn .ar{transition:transform .25s}
+.btn-pri{background:var(--grad);color:#fff;box-shadow:var(--shadow-o)}
+.btn-pri:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(226,73,27,.7)}
+.btn-pri:hover .ar{transform:translate(3px,-3px)}
+.btn-gh{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-gh:hover{background:#fff;color:var(--ink);transform:translateY(-2px)}
+.btn-dk{background:var(--ink);color:#fff}
+.btn-dk:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-out{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-out:hover{border-color:var(--o2);color:var(--o2)}
+.btn-sm{padding:11px 22px;font-size:14px}
+.btn-wide{width:100%;justify-content:center}
+
+/* --- Nav --- */
+nav{position:sticky;top:0;z-index:1000;background:rgba(246,244,241,.86);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line),0 8px 30px -18px rgba(20,22,27,.3)}
+nav.on-dark{position:absolute;left:0;right:0;background:transparent;backdrop-filter:none;box-shadow:none}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px;width:min(var(--wrap),92vw);margin:0 auto}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:42px;width:auto;filter:drop-shadow(0 4px 14px rgba(239,108,36,.22))}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{font-family:'Outfit',sans-serif;font-weight:600;font-size:15px;text-decoration:none;padding:9px 14px;border-radius:40px;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.here{color:var(--o2);background:rgba(239,108,36,.08)}
+nav.on-dark .nav-links a{color:#fff}
+nav.on-dark .nav-links a:hover,nav.on-dark .nav-links a.here{color:var(--o1);background:rgba(255,255,255,.10)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-phone{display:none;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;text-decoration:none}
+.nav-phone svg{color:var(--o2)}
+nav.on-dark .nav-phone{color:#fff}
+nav.on-dark .nav-phone svg{color:var(--o1)}
+.burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+nav.on-dark .burger span{background:#fff}
+
+/* --- Seitenkopf (Unterseiten) --- */
+.phead{background:var(--ink);color:#fff;padding:clamp(52px,7vw,76px) 0 clamp(48px,7vw,74px);position:relative;overflow:hidden}
+.phead::after{content:'';position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(239,108,36,.30),transparent 68%)}
+.phead .wrap{position:relative;z-index:1}
+.phead h1{font-size:clamp(34px,5.4vw,60px);font-weight:800;margin:16px 0 14px;max-width:20ch}
+.phead p{color:rgba(255,255,255,.68);font-size:17px;max-width:58ch}
+.phead .eyebrow{color:var(--o1)}
+.crumb{display:flex;gap:9px;align-items:center;font-size:13.5px;color:rgba(255,255,255,.5);margin-bottom:18px;flex-wrap:wrap}
+.crumb a{text-decoration:none;transition:color .2s}
+.crumb a:hover{color:#fff}
+
+/* --- Objektkarte --- */
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.obj-card{display:flex;flex-direction:column;background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.obj-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:rgba(239,108,36,.4)}
+.obj-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9e6e2}
+.obj-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.obj-card:hover .obj-img img{transform:scale(1.06)}
+.obj-type{position:absolute;top:13px;left:13px;font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:30px;color:#fff;background:var(--grad);box-shadow:0 6px 16px -6px rgba(226,73,27,.6)}
+.obj-type.kauf{background:linear-gradient(95deg,#2d3340,#14161b)}
+.obj-pill{position:absolute;top:13px;right:13px;font-family:'Outfit',sans-serif;font-weight:600;font-size:11px;padding:5px 10px;border-radius:30px;color:#fff;background:rgba(20,22,27,.6);backdrop-filter:blur(4px);display:flex;align-items:center;gap:5px}
+.obj-tag{position:absolute;bottom:13px;left:13px;font-family:'Outfit',sans-serif;font-weight:600;font-size:11px;padding:6px 11px;border-radius:8px;color:#fff;background:rgba(20,22,27,.7);backdrop-filter:blur(4px)}
+.obj-b{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.obj-loc{font-size:13.5px;color:var(--muted);font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.obj-loc::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--o2)}
+.obj-b h3{font-size:20px;font-weight:700;line-height:1.28;margin-bottom:18px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.obj-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line)}
+.obj-size{font-family:'Outfit',sans-serif;font-weight:600;font-size:15px}
+.obj-price{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;color:var(--o2)}
+
+/* --- Filter-Chips --- */
+.chip{font-family:'Outfit',sans-serif;font-weight:600;font-size:14px;padding:9px 18px;border-radius:40px;border:1.5px solid var(--line);background:var(--paper2);cursor:pointer;transition:.22s}
+.chip:hover{border-color:var(--o2);color:var(--o2)}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip2{font-weight:600;font-size:13px;padding:7px 15px;border-radius:40px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.22s}
+.chip2:hover{color:var(--o2);border-color:rgba(239,108,36,.4)}
+.chip2.active{background:rgba(239,108,36,.1);color:var(--o2);border-color:rgba(239,108,36,.4)}
+
+/* --- Formular --- */
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.field label{font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px}
+.field label .req{color:var(--o3)}
+.field input,.field select,.field textarea{background:var(--paper2);border:1.5px solid var(--line);border-radius:var(--r-s);padding:13px 15px;font-size:15px;transition:border-color .2s,box-shadow .2s;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--o2);box-shadow:0 0 0 4px rgba(239,108,36,.12)}
+.field textarea{resize:vertical;min-height:120px}
+.field .hint{font-size:12.5px;color:var(--muted)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--text2);margin:6px 0 20px}
+.check input{width:19px;height:19px;flex:0 0 auto;margin-top:2px;accent-color:var(--o2)}
+.check a{color:var(--o2)}
+
+/* --- Kontaktkarte --- */
+.c-card{display:flex;gap:16px;align-items:center;background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-m);padding:20px 22px;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s}
+a.c-card:hover{transform:translateX(5px);box-shadow:var(--shadow);border-color:rgba(239,108,36,.4)}
+.c-ico{flex:0 0 auto;width:50px;height:50px;border-radius:14px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 10px 22px -10px rgba(226,73,27,.6)}
+.c-card .cl{font-size:12.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.c-card .cv{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;margin-top:2px}
+.c-card .cs{font-size:13px;color:var(--muted)}
+.c-map{border-radius:var(--r-l);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:420px}
+.c-map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:grayscale(.15)}
+
+/* --- Footer --- */
+footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;padding-bottom:44px;border-bottom:1px solid var(--line-d)}
+.f-brand img{height:44px;margin-bottom:18px}
+.f-brand p{color:rgba(255,255,255,.55);font-size:14.5px;max-width:30ch}
+.f-soc{display:flex;gap:10px;margin-top:22px}
+.f-soc a{width:42px;height:42px;border-radius:12px;border:1px solid var(--line-d);display:grid;place-items:center;color:#fff;text-decoration:none;transition:.25s}
+.f-soc a:hover{background:var(--grad);border-color:transparent;transform:translateY(-3px)}
+.f-col h4{font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--o1);margin-bottom:18px;font-weight:700}
+.f-col a,.f-col p{display:block;color:rgba(255,255,255,.62);text-decoration:none;font-size:14.5px;margin-bottom:11px;transition:color .2s}
+.f-col a:hover{color:#fff}
+.f-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:26px;font-size:13px;color:rgba(255,255,255,.45)}
+.f-bot a{color:rgba(255,255,255,.45);text-decoration:none}
+.f-bot a:hover{color:#fff}
+
+/* --- Responsiv --- */
+@media(min-width:980px){.nav-phone{display:flex}}
+@media(max-width:980px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .f-top{grid-template-columns:1fr 1fr}
+  .f-brand{grid-column:1/-1}
+}
+@media(max-width:700px){
+  .obj-grid{grid-template-columns:1fr;gap:18px}
+  .obj-img{aspect-ratio:4/3}
+  .field-row{grid-template-columns:1fr}
+}
+@media(max-width:560px){.f-top{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style>
+<style>
+/* Objektdetail */
+.gal{padding-top:26px}
+.gal-grid{display:grid;grid-template-columns:2.1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:clamp(340px,52vw,540px)}
+.gal-grid a{display:block;overflow:hidden;border-radius:var(--r-m);position:relative;background:#e9e6e2}
+.gal-grid a:first-child{grid-row:1/3;border-radius:var(--r-l)}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.gal-grid a:hover img{transform:scale(1.05)}
+.gal-more{position:absolute;inset:0;background:rgba(20,22,27,.55);backdrop-filter:blur(2px);display:grid;place-items:center;color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;gap:6px;text-align:center;line-height:1.3}
+.gal-badges{display:flex;gap:8px;position:absolute;top:16px;left:16px;z-index:2}
+
+.det{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(30px,4.6vw,58px);align-items:start;padding-top:clamp(34px,5vw,52px)}
+.det-head .obj-loc{font-size:14.5px;margin-bottom:12px}
+.det-head h1{font-size:clamp(28px,4.2vw,46px);font-weight:800;margin-bottom:16px}
+.det-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.badge{font-family:'Outfit',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:30px}
+.badge-o{background:var(--grad);color:#fff}
+.badge-l{background:rgba(239,108,36,.1);color:var(--o3);border:1px solid rgba(239,108,36,.25)}
+.badge-d{background:var(--ink);color:#fff}
+
+.keyfacts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;margin-bottom:38px}
+.kf{background:var(--paper2);padding:20px 18px;display:flex;flex-direction:column;gap:8px}
+.kf .ki{width:34px;height:34px;border-radius:10px;background:rgba(239,108,36,.1);display:grid;place-items:center;color:var(--o2)}
+.kf .kv{font-family:'Outfit',sans-serif;font-weight:800;font-size:21px;line-height:1.1}
+.kf .kl{font-size:12.5px;color:var(--muted)}
+
+.det-block{margin-bottom:38px}
+.det-block h2{font-size:clamp(20px,2.6vw,26px);font-weight:800;margin-bottom:16px}
+.det-block p{color:var(--text2);font-size:16px;margin-bottom:14px;max-width:62ch}
+.feat-list{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;margin-top:6px}
+.feat-list li{list-style:none;display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--text2)}
+.feat-list svg{flex:0 0 auto;color:var(--o2);margin-top:3px}
+
+.spec{border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden}
+.spec div{display:flex;justify-content:space-between;gap:18px;padding:14px 20px;font-size:15px;background:var(--paper2)}
+.spec div:nth-child(odd){background:rgba(20,22,27,.025)}
+.spec dt{color:var(--muted)}
+.spec dd{font-family:'Outfit',sans-serif;font-weight:600;text-align:right}
+
+/* Anfrage-Box */
+.aside{position:sticky;top:98px;display:flex;flex-direction:column;gap:16px}
+.pricebox{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-l);padding:26px;box-shadow:var(--shadow)}
+.pricebox .pl{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.pricebox .pv{font-family:'Outfit',sans-serif;font-weight:800;font-size:38px;line-height:1.05;margin:6px 0 4px}
+.pricebox .pv span{font-size:17px;color:var(--muted);font-weight:600}
+.pricebox .ps{font-size:13.5px;color:var(--muted);padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.agent{display:flex;gap:14px;align-items:center;margin-bottom:20px}
+.agent-av{width:52px;height:52px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:17px;flex:0 0 auto}
+.agent .an{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px}
+.agent .ar2{font-size:13px;color:var(--muted)}
+.aside-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5}
+
+.det-map{border-radius:var(--r-l);overflow:hidden;border:1px solid var(--line);min-height:300px}
+.det-map iframe{width:100%;height:300px;border:0;display:block;filter:grayscale(.15)}
+
+@media(max-width:980px){
+  .det{grid-template-columns:1fr}
+  .aside{position:static}
+  .keyfacts{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr;grid-template-rows:1.6fr 1fr;height:auto}
+  .gal-grid a:first-child{grid-row:auto;aspect-ratio:16/10}
+  .gal-grid a:nth-child(n+3){display:none}
+  .gal-grid a:nth-child(2){aspect-ratio:16/7}
+}
+@media(max-width:700px){
+  .feat-list{grid-template-columns:1fr}
+  .keyfacts{grid-template-columns:1fr 1fr}
+}
+
+</style>
+</head>
+<body>
+<nav class="">
+  <div class="nav-in">
+    <a href="startseite.html" class="logo" aria-label="Areal 200 Startseite"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZMAAACMCAMAAACONbSpAAABgFBMVEWmUyTkmGrVWyzWak2UMhzipZbspFTj5ODy36liMzKZUjKplJSUYlVrWF7dkyjQcl10IxnHVTjw1pj6aCCPZmPSmXNxLydtagavXwHzxnL/tiagXEZ3Ogzzp0Sw5+7eaEW/vz+tt9l0TEjlpob1zGP4yUvKd2IG//+GNyvbkDN3Rjqxlnr/9FhulaSVUTp6+Ps+FhFqdJmyiWB7Rjhtp+4ICO+ZMyL/AP/FPSKReY4ArP8PdP/RuMkMJ1T/PypoaPZ4PkH60TA5i5QA/wBnH2M/apSZZuWDPUU8YWGAPTm0gDO8gT1VAP8AAADQOxbveQz2hQv8mAz8twv9pgzlRxbtaA/7/v7aQRj/AADtVxJ+fn6qVVXRRiX/f39/AAD/qlW/fz+qAADiPRWPJRV+Pj73py7//wC1NhnqVSr/VVVVAACnKRSqqlXviCr8yCyuSBf/fwDqdyXztSv3lyavVxfWUzLkSiW/Pz/+ww2/PwBUVVX//3/RZhKXdnGoeHDTdRUsRH8yAAAAgHRSTlPkWeCh7CqgFSBbqCFcKN9a4K1LAykzoQQDXAOaDNEMzQQRVEub0zABqLZlHQMQbgQKFFGcBwMFAfsfBAMWDwQGXO8LAREMCkYVfW3HAwD+/v7+/v7+/gX+Af4CA/oCAgMEA/78BPQB/vwDA/4D9fz+Avv1/P3w/gT9BAQC/jUy+pNHBRYAAB9dSURBVHja7Z2HWyLJtsCbjCQZQTC7o86dtJN27+7dm+PLrwiiRQsCigiKOuYwyqz/+j1Vnaq6q2lQZ9b9vq773u7O2I10/fqEOqFKQvcbN68bMG5uarXaDUbueIgh3e/2dp8/ueMXYYJReGxsLAwjBMOVk0fApIHCs9vGmB1rN9wZ/YWZTKFgqWiMUhAduTP6CzNJmZgk5twJ/XpMGqkbkTXB20V2nAbQjTulX4cJluEfNZGFP+WYlDzINShfh8kGQpPBMNq3mnhPiWcSJNeaL5py/bGHZlKTUSh4WpgNo0B/Ew9MXqIJ0zVHChd3PCATOYWQ57QAYxabjcURelnkRyJkun0cjT1bwkDPHQ/GBN7wcPAgnydQgljmoGBsMvHUyFdMSD4uXz0bQ0eu7X8gJngCYc9BIU8GgTIna6ahfTOVOkJhM5OSZ6qBWeUW/rgM4+MSQt+4c/0QTMCoj80qRFQoKIUVHgqysaKZSZCou6kbmf48rCJZBlEJoSPX1N+fCSw/gqd5YxQKRVioB6hnhcMeT3DWLCbF4vbkGJ36qRrRe6Fny9r4OOaa+vszqbUXTwt5jgmBQnkEE6dWHoqkbG8HJ8OEy7csEqK/Qm7c+L5MUuglh4Ta+dNgODgLC0XCx2aUSsvbickwsGOREP01hl1Lfz8mn1DEygSoFAvasGMCY/nk2SSPBKAkfnDn+35MqiidzwugsMOWCVCxDukHV3nd08bLv5XuwcSC5SoxglruhN+PySV66yQo/ZmUzGLiTvd9mVTQ7739mfQnwjO5SsRcMbn/mrGOIg/HZFn6z7o73fdmAlb+tg+TogVKyTRYJIm3rpg8SAzyD1I/JjAK+dve2dmh5IchSYdnvdsCoFCJcEyk38q/c6f7/kzqaNqWCfC49R76/ZkXkdirWDodz6ZjsUgkmfSf3RaBBi8mrjV5KCb7Mmvleb3VO/QnM39LmxMmKBR/FQGRKQIIFor0R1l2Z/v+TCBUT3InAib5Myk5kqbRxvrmTKtarWaz2Wq1NdNVuCxk/GeJEismr8A6ueP+TFIsEoYIiEgkRoDUWxXrSrPSImBwTJJuS4yYuFP9EEw2ULAgkBIg8ioKP56p2N7Zvu4SKhkpoYnJgismd2PSxnze1nNqRZI/8y+ADak7TbGchX+kIyoV6f/dtcmdmJAAYUpP3abQosCWeP3TAaGItCE7b7JGVRCWBel2+WoZIl2PT0wal3X5Un7scjJHnajUBqmu20WBA4sXnD/MfEaoZXkQvEH/Sm6YflLrIjwtJUqwNnlsD9/Wk6mPmEmtHZ7NJ4KL9EtujMuhA8vKpOd/RcNg5rFLnk1pdahZQgEoLkmxRycmsHz1+Hy+UfwYoUiMRc+v5vPHB0EPFZdZS0zY64+h+rXAdEBxi897vjPv82DKhxOhLorGHt1TYznsu1hZWdmZD6DKo2WC5dDx6moe/i9fOJgNLgYLZiSH/iiaEXrMHu8OPN/K2poXHtEMBV0/Qu1whHwr5XIZvvQ8bv/usTKBmQUgBImCIG8eh99joQbaRT5KhI41r8cKRX509n0XjV7kymSsXIxCnkgoSo2Nv8jsSKVSDXtFV9tITUwcwWVHMOTUxFSjZi+l4amjiSNtTExNfXsjZNLGiVVl5AUDrPv3SCjlVTRqIIHhXfwVrEQ+gZioTFZ8SOSm11I2Ln5D/LciF+ZIXDvVEPZNsYXukmZNFDERMwHFNS12UWoowCFZW5kPtR99cd2mzqS88gRZ5xMDEbxInACfb54O+p+eRbC08r6ogBdBfZUxZoNBD6ncEXTjkHJEPLYE12gjuLQ0GeIK3VUmWTy72ocJSElXWN8wAU/HjzWfjTJ4VEye9GMCWifg8+7srHFjddXrPQ56iJo3G1TsCSr1VUwWowR1bshSvA4TPxY8OVle5vJLJ1Dlg41CUUm9NHBsz6RwBrZE6J40ZF5MqPYKyfhXzWQXhXy88DNgvLNjPBTol4IC3oKofqQE/SFHpu6Q0NJJSTBoobu2kpBUPySYtyFSyBd6yTkbjzFlERPwLz0o9Sti4jUzCaDA/I4QCJGVtdVj7vkASfC0YFfRsz3JGYopNCYkUlIKRbVmEkkR1vCxvZTkwQmu2rQLWcWEuJePXVAMJjkLE1AZ82Z1zEIBKh5wErS1ZwpD7NyWSXGb7VyDvjYxkpJaKIrlms5kQxcTAZXC4YJdinBXICZUUDZ+BUyUYWZSk8N2ekuDQiSlxsbOC5bqEaNUgWnxvEFj26J6Bf0/rpYwlSqJxn5CujWxMCl4M3ZIIDCx07QyWZtH8qNn0rRhUsWi10yDo8zQ2nFAhQJv/gETM2dbEPROgzEVSqMdmjVwsJUlekYW+nQaKhPGEV4VaK6ndjGhDVh6NUWCEnjkbQ3gCzfFugsm+UJ7jHKuA0lspfpDkjqdsoKEoPEpfZttGR8oCGCeepIUUYcknfV0KrOhI1n56KAO5Na4Fi6+LTIdIWGFCVRre21N/KFtOkqW8fxKWfRK+fDR45cTAGKVk/o7r/YUOX/s81OsjVA0Ni2VFSIwTQHaBQ0vsyocBSkSYzZswNEYzLSuvaao5gprmqsgxaLM74RrE1qOnAoKYZJFcT/UQgjFpJfBWdsIhccQkzILxxtGtV+l7qqicc2aSNMW7RCa7qj6Kx8kZr6NcEKdJ4nGWbvdze7mZreuXKxCKc3SGTTEJDFNlp5wLYxuV02Ua4ISBnjqmjGaOYQAZN4qJ1LcNnAqk0DeSln1KVfUoN6g60Zc299vcKMmtEIY1+Bn+9VGDQ9opeCTHe6wZfJJd1rWYZJbNRCQttwm0S5cqUIANlZWVbwXw237upj0YmimyjBsV8AEa1C2wwAEo5AqJkUIiVxiLvvURTEtSw7Os8oEyL7yewUr+F4EZW2rJAMXTTETp3Vju/FJFkue6bpdPhG4eekkfhAK5N+by2q7L5Mmx0QGh4w+xMU0+tHyBLUfUURlckzeZ61goZCHq63h8JCkCsokLGjAUKlM/i80sW8tEJouaa5XVpMT+P1xERQQk6xtVYtPA1I2wOju8GW/sCyR7YBlYN4FqtDrMP3RuPJzZHrFzB9cZz553P4OauNFTNBz1Zych+pY1HQb9apMFmGWZa2TzftUoEz24eXXGm+n4H8eBcnpd4KVQgV9UATl6u8YtfWcVguFIocm3VVYzVg2hmCij+dNYibLqgeTY6l47RVNjcT3IAe2vkPHxYX6r4tz7yjjTpDNEvC478n5+rry4/V1r280IJAmJqcJoUD1k+FyeoePcNmVB5WT55Ly/afFjo2MJJUJLObbckh9i33CBdkRkrTdNY7onhuKNXl+I3RhI6pBwagmMYWoKGYSlcKZfQ3QJRrV1l0qDVZc7NeNuxCx816Aw5mzjJUdAwr8OxQk17E/BzU/D7lMWWTh5E2SzgUSTf6OC68vhExPYcukimI5auCjck0c5H+i+qeECXqqTNeBRxY97EQ7om6hBb9iCr1UmASFb/mG/J3KJIRu2LqVLvpgam6QQnY1QL+TsSom1KUsw9w1WVmZx3UbJIH5C8URLXNA4Mb15rq2GANyozsXOdNF8IfmBeAWiArctghhKu7z4JeQO1bOIe1+ORATSCNN+zsdKW3j2HySn+hyAi5JXGk7OAgI3UxQXgImHuFGJ1n0uqQ7XlzNXRoWj5wjPCLM9qrrxRWNCPz/Si6Zya1oU0FzW8L0D/jP500TDfa9Vh22FAk62V10ARnmS4vewj4iIeJPJpm2lDwIE+KC/vwa2wUiJpDBJNDWmYSECMEt07eaw22UUMIpHuGOGm305uRKZdLgmGxUgny+98+2UZI6WEPNiJCX0R9C/qb2giru8EQfI2TPBH6h/AmNnjf7XHVuzjA3+jGEr9RcH0WbeCAmXYSQnfuP21gLQo2jWgVFHZiMnyqZFFodozKZFDLB6KnKBFbyEm/CEhyTCLJTXbvy+HpOZUIlJYLQW9a4kABLTRBH7jfXGhNwiy76XZVrnvPmaheN95M+Klw+tCkPJCeVaq1tqxw8KhPwtPDgTOjPHZjMiZnAuuZ4QNVF8ovMHDT9H2T0RhEU1c6L1o1V/i4Bkwj8xksnJGSK2R31agRJ388FXgS3PAiTfjuZ4XlVTJ6Aeh1GTioDyMmyiAnJNnILxrSd1wU6aJ175hdoBrofc02GiXXdCJGLdc5gW5B0oCWCRDadkJSb54YYZqn0mTwGoaRsGExywzPBf0FBLVT7Ft6cGooq03UQfgAmc2ImKd7E5yXbiDAt/GDnMo6qFVh1MkwE7nCKu4uLkBFPbCW3lyFFe+McbuOOFVbtNeexlr/eNd56xQXUb2GFstyEL7R/DyZQ3RBcVaP13jcwy1+FCUltDWROIOFiFpM6edIXjCNKAyycYv4nwpyYdPb2tujYIwP+ncw8B/3AfXQz19mCdjy/P5nc2svlmpzp2dWqmVa0X6p8LnwSHXBHs8laoYC66tgEkR6WCVRC6FKyGiEOzMMysdFdExyTQj5iZ04uefVS7oyQ71hFC/4m87aaBaXGSkA5t5UZMY04vYiTQHJV/B25+1184YWfEbLmjjLDxG8wVBXIWnJkQZmhf6RH/FsmjNU7MsGfoHBCk5JViYjJIEy27y0ndfSSZXJr2xYqYy9nU/3P6XPVQ37tbSWqaM20btzlSCYFVcRdZYYZIi8+sz//7N9jBFGZ4SrjEYD6S47MKR6k8qix5JYOrJxbV33ooZmAzgOPS0NyHqMFt1+FSe2dl3O74jYmniRO2Hf5p1cKvBZ61dFyRQSKd5zLN7JMVvwf0Pt6ixvXWTrDzIu9tYDQ++us1pMH/xzZM16G8xBV6qy3sZf5AK/Gtaoyr+kdW03GCCnaeFh7cgl6y6tlflfXIsrSy5mJ5366q71PwudmJhWbxMkTVr8QR1h5rvofGOVVXtnxcVVFwMSYPrGbXeFm2B9Hde4bVOso1tF/NS31vWR0XbmTMXXHyHDHgqHxcuvjVFCGYwLh1MA8TTCuKUhCXfzlmeAGLY4JB7k2oLMf7OKvnGdUzmW0+Z1BIznWoni5dSPLZD0tDCSygU3IvVq5zUCQkFlxTLQZv6GZy+B6RXCH3+wYMLor58gERN3jNapWvJE51Rs1mIRs4l2e7eGZwDbOErXtJE0RTBzzQWG7Xt0J3vdcgdf5X1qnzX9vmQRlw4aJuO8DFmW6+gfH4UfrFTNzfv3jzyGuzXxm2S8U7BbKGF8W9B3m5MSRSYrEp/VKojUonNaWXc5MqD0pDWdPVCaQz6BA+HR8QRJ/24p5vZiBZ9S9hAwbmAV3mFnhODOpko9W7RE4DnVZdElMUj+eaCKIJ+j2pSPeH0xGjEZVrPzgTCD4u+g1irvWIO++2UZfmgmsNYLHx4KylUJEfJrJpclb3WNSkbBu7DSZsNcO293BMYmKmLBL+HKsVq1V2VGjf7wMSdoMk8Ai8hq67o14dsH1MAWeGSblvkw20DtDSKDnKRI13r9BmVh017eOfhdb3GVmkhLeHTrnxeRdalcfE/hFmRUUqFOVhUxei0IEbHjA/2e7iZrWaxhH4esYX2baZokLcSmJYbI5MBNYlAR8qwaSwxiXHHtYJk85JqO2TI6c14skjMQN30WZVV4eeddGTrDQoTNcpMXx3wjHuI+ZYEaP/mTnuoOCY0w6RoPqrl3GuMMoQ6aLcyHuqrucmUygcXENZEH8beuMtlDMpifgUca4x7PoOedSfWs+JA/OBDGfXV4nQ/knO+BvWCaedcZzlm03UTRQk12OB/K7NkjLA4MEqrJmTIHYweWkhp4P4QtX0OueDZM/ilsB180BV27O2MgssShGnaojExnNeXNDjOYTjontCw97w/2kf600XLaJpvU/23gytToKeNdWDCGJWTJdLJPKAzJ5LcmQ6RfrrtsfxOVqg0+aIiifBmWCzaFNp48HJsZHSn2YjDMLI5g/SJrl+t8GLrxnh0FCjLuM7sCEcBiCyRVlAkbjiQ2TuKitbHyYaSMWRa9THYDJn4ZikuOYRAZj8vMATKCOKQytWhqTlUPYhaklSCJ9MSZQH5MXMxFUb1SZpxlMUIx1Y9WJSWVYJhGWib2xhsljHT5HJhBMWdwxOhzK0nfCDP2X0l1hwsQnbvktxCw1WhUUHk67lNeNOtXqA+uuFVgksroLo0HkxJkJrBX0fkYQkjIEU2ZsUB9/odwvOMM2jpf1xDJwhMu5YQVFS6NUB7DxUt/0LRdlI3G2H9mP/JPduREb8ugQugvXsW9Nb9ugxr2KvjoTj7j5pPDSvGiEHpjhlItiUdQ0SnWA9QnDRM0/qjlIPR+p/g38XWauvoF+Zmfbdn1iIFDlZNqWiTxhdGoRIYnadKEPx8So7xqISQMtivuwCwdzpjfv0uoIDwBlR60xcWZSZ9YN6wsj/UfctEQv2zVYYHax78gEejTXdCSdaWy/3esXZIKN3niToFhqLuvYm7sDEzXl6sykpUfiyTreMdVEJvOdxCzRs7JNyabxJqm6y5ZJVTfvUAANK/c+2xY9LJMQnz8JSTa7rHjklMN6cSCLotb9ODOpoXRHv3Eew4as19VrMtRMpBaNJP+drahZ3DIT8xUJCihc5k1yYnKE9eY5W+OuV4r83qm+qziMnFwx9cJdlPH7D71eb2/VYlD4lhxGtVhtrj2UCy1z7sTkn+xrD1Hf1ABZ2RgT5cH1mrBPZt3CxM7Gg3HVm+dsjbsupv9xq+UZa8JkmHLMK6kXbh+pNdzL4hpuUMKKnJzoNdzpmZH/eZEhLa49TnlxL0DVsl7s7PlFY2vPBEXJJDkz4aKFJMfyGycmFZRmill8yJpnhH0t2W/twERGXqN5ro4dti98o/U6CBs7pmSNCVNXv7wkT4n5fdTyJzWuNjUaX5C47Yi4bSx2zWGVvWRGbH4zSZ4KvPIbPJOfojbbHDHKqwyp479gx3bRFzkWiqkLvALhdi61YGXyXBZts1Se7qu3FCZq/0lBvJvJhHr0bmkWEkwpo/9EFG2HNq4rrScIK0wq162ZOq0oj3FMEswHYNm0yt7LPLX7uvEMB6UM60aeiT8tXnVzU5wDKOiy1jc3C25Bh5lxH0b13Yq+LdomG6S0syeYFSptNzLJ1gXmhEqZp1ks6CGotNVjXmnv3ITG5CQkONO13VAPhLuanWN65+hDtLJprnTlIGx0kYAjzCsuKBJ5380a47pVbb3PdrvXrTp66jcLyi5hUnZicg2Jyhw/x8Tf+2QaTK8pLSoz6M97tBtoQjDgM6lbCxNI6m9ufrqs8Hv6rA+yrSh8jHrG6yLsxowsRx2rp4aXiBhtoO/UVuwlgUEJkzN4KZOg3vfLKnTTUj7FFNrxTNL2rnsWLXS4i0n53SBM4Au84Kbw3BfAdn6wlqDnftW60vRIXzGPz+InWpiUfSG9G9IwJ97nA1TiZVWtUsgnMPq2bdq6UD959/Q1uGDwsiVUQYHNPkyPZBxleUVahiRzGCLGuV6nYa2xzywmUCO82e98NJOgjKNqlfGRbJnU5bjfNIve+Sfm4QsYSrVq9gbX1Tu86wLP3cKEUPQ9GaXuOgR3zhUmT2qpxob9aNBZhb0eeqqgBDHZLzsAbfn7N41GYAN0WTihtmIn/kof9a+SKiiwAxia+iYcDgcCcHnjm29g49lnijW52iZxX6n/GVogKA1tvSjxYvK3fgeawOvOCwrkwXeh5d+RCbxQMb9wlcONc2NroEp9zj/4cuknKxP64aBda/C/kMJkbdS5GYV29kbobqaw3UpijH/38aQqJaWiUjbZQhHtHKWTSdO1Y8/08y9+m7WeIWBSXiAoSoMAOMI/cQ/n/0M/6YbXfYt/P4ljG2MVn2yrpTMd57mFdWjVKJbZGphJhzCpWxZaZfIFa6S1T5ETn2eUDo/dIOF3UrWuCUrhFDYAHhsL0zEGZyFrOw+VbuO0vBC+paTvEXWyNDlGBrl2cunZiYZkO4YETKBZ9VYkKBYL73DY4iZb6UYeehSYGB8hRe03wK6bZUw4fIavWuXqT/sP6TVMZotJ0DN+9CeDyQrsBrlDd4RUG07IWCUqhIRTjo8PZqmyy2qCQnYmKhRPtVHUN/AqFd6q0YUqepVgdu460QZzSsxy5K9Z0VkbEJvlGh5Olf2nSJ2BMVOdnL/SfwPrKorz7nAMuoo5Jra34y7+fs9xcr1Mc+4EWhhUUuAX18zenZZIlkkTXt897phdzmYxdNdU6p+lfKFgf55oqSiFKsrbh7NYKthucqccf6FkESVBtOKWX6Ngcmi8+dXK9LPwytvOvbsdwoSx8ZU+h2TDXL9ynONztmG6juLJfhg7OgLpM3ls05fT8pSMnFg2uVs1Dbq7B/H6zpQNssWbDxaYlw9DELuwbIvkiiCpis+kkT9I/N7C1B+uov/qMIIChTsOe55DPTf7LsINLWaR7v9H35LQrsMcm9ff8NlvMrYYO1sZia84yqLsljWRvNmPiRnKsZKBAL0prVLNJWJyy+mDa4Bya8ukJGn9PpKgGDGYt2ovGRHvVsPSeYGcD5l5lzRUHSwwIUzwPGmsN7sOUhbKbG31MSsd03GP8OQL5kCbHgJaMJZLGeWLVyySCILcMu1gvWbHhMyLIifEcEalM7HqKkjT/IazFdjTRkoIkZRupd9rTyQJlp8Hpt0HQXXewBzOJDv6U6adj0O4BiVv3HANc6FrmL1kxYkpSOGbEehItMGyl4xaPwCPZCAX2eGCpHtbyQWMus8z6i/WSu+JJLKfvpecq9MU2SBMaP/cXF3fwiImHfbM2ivfO4tYaisq5OwkOCuROzycbIwjsVFoyZIAChxY8igQN2vDLI0k6UPAY8YHOaEC2nGUx6Y31OnfpDPQMZqEbirnZTI5kisO4UzoFbWOTNT6CcRl+czdkIQgKUlHdmFVpvzitP4udNEcuZa2o5L21qfkA+FASthuRRuH9kOKGEoJ/o3TZA9IZsB+j7HPgiNvYE8bFH0bkZhBrp1Os5tXSOYyx/CBILlFTQq8WhnaTzsyN+ihIcYNdW3vo+uZmTdooL5OWVFvcWPAyZzKv6PiT7imv+WNfn2UPezjzczMZ8SIJ0EYqqgfaERTo59h/Gwen7Wh/on7AsrBFXNR/aLPr6P0WL6qWAGQCLxycZqM6Ds9tiNiAjslJASbPudPaSaGMH4/E0cIDXhiGdww96/3cWzckO3qe5oMMip1m9/UtVndVFrvOVjd9xV2H5Uu9y5dM9+jK+s7Zg341XjXf8Z8Y7dl995WWuYocn2mansWIJ7AQeGxDoXTRSIpFeUh3g/6vVFdvYGZp3r2erjdh+WKdeDBbuB/0fW14Gg2y5WV6iCjItyH0miVcdIjzLXWh5GQbYM8d5iWAgXJ9fpwp/oNfYM7OCY15UgtWyhH2J2vr8xkn/Tli6FQ9eVB8h13Df72G3ei78YE0qh9kAAUSBLc5XCAR74p9yM/7/fPkhiJCqUIUFJD6y9oFRtbwjfuVN+JCeTNDvsJSqFIUmTDHQ+ApxBe+vh3cRefO5zlBAJqZ33kRNVfU7WhhCQMec2rj/io5k72nc4q/5Gc8NAXChWV1IDz+61MhORKP7DAHXdgItdxpMcv4c3Hx4OoQKHHlLN9wITImJr8J7XJLpQ7MaFtOasGh96hZM3YFCmVo0Zfa39D3N+xZx/1HNoz18zfkQnZzV5PafWkTCwOGRtLFg2O7grT4zsrwmShfDNFT4ZkiFBBmXKn+05MSCJdUo+T9ZOt6KJSz5rbJAeqKQUxqW9uMBdrupmiUx9e4ojQSti2Gwe4GxOydATnqwdESC18Cz2N9CxVANpBnSFllo+m4Ejh1NHEhKyeMTz57ORq2TSullxBuSsTso/P4aH/b++UmP41wtNnluPu1EKZ7dngZJh9+5+HwpNLiRP9JDVOUEKya1LuyISU5kxH9SwLhJ1jUs9SBqCVlJW2txPKycNLS8HZxMk2zWYuC4brD9+DCU3sGPkevAkmppc3UWEPGOxXs8SbeXc1f1cmKDtT4euCQH+JD0+1QyOE8gy74f47MxGUHwQL/aGUis6SciVusHTHXZi0ceig8ACC8hEjV1AeiMm+Us4yDBMCpWiWk1IM7btz/jBMlENUHZAUeSKkkEzimSSkNHKz8w/EJKWcDtkXCmNQAAiUykZioe9vXSRfiIl2sG1fOWGEhJ77TAvephkoUiQ0aK2ey8Rx3KjVkSwTKMDsiVcpxTMpEqdlgPtQ6ylppkSaRk61+O4YnElKPWyYQdKLxaZpjWzvtmCCckpP0aArHNzVoCSgSLnr+lwPx2RCO2xYH7cRpBx9Hpuelgo8k8RTlK0YNcsLErS73EY+DF6R6jIZYEDbOB8aJgecplvqJM8lTEy4W2cASuLMaT8ZdwzLpItenHHxrjN1z2tcbc1MPH1Z4qAk+B1F4MwSaDGwPV7bHXddx7/53s80I/XYU502tD0sNCYvBXkSV289OBNiOl4l/b28qrn01gCyxv/hu1NOd1lOfq7OuP7Wl2BCWkkWkiSPUihIcVYTwTZWB6W+TNzxheQEky0CYhH/Ye/MtGcP2cKNFZT/vVNVsTuGZ4KUFV96JPnKZB3gqE1u4fidy+TrMaEHv4m2jPiOEZPl0lvX7f2aTGj7XNa6v2SiSLUX2JrE7VkauaXBX5UJEqbvI6T9mGzP+SITiSHZndZfnIkMMZZXMWgqDrkBrcfChBWZzRnXmDwOJm2yR7ZDi7Q7Bh3/Bv4vPlk2mBiQAAAAAElFTkSuQmCC" alt="Areal 200"></a>
+    <div class="nav-links">
+      <a href="startseite.html" class="">Startseite</a>
+      <a href="objektliste.html" class="here">Freie Objekte</a>
+      <a href="startseite.html#ueber">&Uuml;ber uns</a>
+      <a href="startseite.html#leistungen">Leistungen</a>
+      <a href="kontakt.html" class="">Kontakt</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+4367686219663" class="nav-phone"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+43 676 86219663</a>
+      <a href="kontakt.html" class="btn btn-pri btn-sm">Anfragen</a>
+      <button class="burger" aria-label="Men&uuml; &ouml;ffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- GALERIE -->
+<section class="gal">
+  <div class="wrap">
+    <div class="crumb" style="color:var(--muted);margin-bottom:14px"><a href="startseite.html">Startseite</a> <span>&rsaquo;</span> <a href="objektliste.html">Freie Objekte</a> <span>&rsaquo;</span> <span>HALLE / WERKSTATT</span></div>
+    <div class="gal-grid">
+      <a href="#"><div class="gal-badges"><span class="obj-type">Miete</span></div><img src="https://storage.justimmo.at/thumb/2aeb7c11709f920e56262fe77bdad823/fc_h1080_mwebp_w1920/1iTIWqwQ9fk1GtmMXCow5f.jpg" alt="Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!"></a>
+      <a href="#"><img src="https://storage.justimmo.at/thumb/8bc5511a46c30c233bfac42f0f0ef8e0/fc_h1080_mwebp_w1920/30FAk4SU8kFIx4gsIuEk4h.jpg" alt="Ansicht 2" loading="lazy"></a>
+      <a href="#"><img src="https://storage.justimmo.at/thumb/f342a75aff5cd0432415a2fcde7e47a5/fc_h1080_mwebp_w1920/2T9gbTBU0sigUSHnainBwd.jpg" alt="Ansicht 3" loading="lazy"><div class="gal-more"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Alle Fotos ansehen</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL -->
+<section>
+  <div class="wrap det">
+    <div>
+      <div class="det-head">
+        <div class="obj-loc">2601 Sollenau</div>
+        <h1>Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!</h1>
+        <div class="det-badges">
+          <span class="badge badge-o">HALLE / WERKSTATT</span>
+          <span class="badge badge-l">Sofort verf&uuml;gbar</span>
+          <span class="badge badge-d">Objekt-Nr. 16614877</span>
+        </div>
+      </div>
+
+      <div class="keyfacts">
+        <div class="kf"><div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17V9m4 8V7m4 10v-5"/></svg></div><div><div class="kv">112 m&sup2;</div><div class="kl">Nutzfl&auml;che</div></div></div>
+        <div class="kf"><div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="kv">295&nbsp;&euro;</div><div class="kl">Miete pro Monat</div></div></div>
+        <div class="kf"><div class="ki"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M3 9l2-5h14l2 5M3 9v11h18V9"/><path d="M9 14h6"/></svg></div><div><div class="kv">Halle</div><div class="kl">Objektart</div></div></div>
+        <div class="kf"><div class="ki"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="kv">Sofort</div><div class="kl">Verf&uuml;gbar ab</div></div></div>
+      </div>
+
+      <div class="det-block">
+        <h2>Objektbeschreibung</h2>
+        <p>Helle, gut nutzbare Halle im Areal 200 in Sollenau. Die Lichtkuppel sorgt f&uuml;r viel Tageslicht, zwei Hebeb&uuml;hnen sind vorhanden und k&ouml;nnen mitgenutzt werden. Gesucht wird ein Mitbenutzer, der die Fl&auml;che gemeinsam mit dem bestehenden Betrieb nutzt.</p>
+        <p>Die Halle eignet sich f&uuml;r Werkstatt, Lager, Montage oder Kleingewerbe. Sanit&auml;re Anlagen mit Toiletten und Duschen stehen allen Mietern zur Verf&uuml;gung, ebenso der gemeinsame Aufenthaltsraum. Zufahrt und Parkfl&auml;chen befinden sich direkt vor dem Objekt.</p>
+        <p><em style="color:var(--muted);font-size:14.5px">Hinweis f&uuml;r die Vorlage: Dieser Text ist Beispieltext. Die echten Objekttexte kommen aus justImmo.</em></p>
+      </div>
+
+      <div class="det-block">
+        <h2>Ausstattung</h2>
+        <ul class="feat-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Lichtkuppel f&uuml;r viel Tageslicht</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Zwei Hebeb&uuml;hnen zur Mitbenutzung</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Befestigte Zufahrt f&uuml;r Lkw</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Starkstromanschluss vorhanden</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Sanit&auml;ranlagen mit Dusche</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Aufenthaltsraum f&uuml;r Mieter</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Parkpl&auml;tze direkt vor dem Objekt</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Monatlich k&uuml;ndbar</span></li>
+        </ul>
+      </div>
+
+      <div class="det-block">
+        <h2>Eckdaten</h2>
+        <dl class="spec">
+          <div><dt>Objektart</dt><dd>HALLE / WERKSTATT</dd></div>
+          <div><dt>Nutzfl&auml;che</dt><dd>112 m&sup2;</dd></div>
+          <div><dt>Miete pro Monat</dt><dd>295&nbsp;&euro;</dd></div>
+          <div><dt>Betriebskosten</dt><dd>nach Verbrauch</dd></div>
+          <div><dt>Provision</dt><dd>provisionspflichtig</dd></div>
+          <div><dt>Verf&uuml;gbar ab</dt><dd>sofort</dd></div>
+          <div><dt>Ort</dt><dd>2601 Sollenau</dd></div>
+          <div><dt>Objekt-Nr.</dt><dd>16614877</dd></div>
+        </dl>
+      </div>
+
+      <div class="det-block">
+        <h2>Lage</h2>
+        <p>Blumauerstra&szlig;e 200A, 2601 Sollenau. Rund 40 km von Wien, direkte Anbindung an die S&uuml;dautobahn A2 und die Bundesstra&szlig;e B17.</p>
+        <div class="det-map">
+          <iframe src="https://maps.google.com/maps?q=Blumauerstra%C3%9Fe+200A,+2601+Sollenau&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lage des Objekts"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANFRAGE -->
+    <aside class="aside">
+      <div class="pricebox">
+        <div class="pl">Miete pro Monat</div>
+        <div class="pv">295&nbsp;&euro; <span>exkl. BK</span></div>
+        <div class="ps">112 m&sup2; &middot; HALLE / WERKSTATT &middot; 2601 Sollenau</div>
+        <div class="agent">
+          <div class="agent-av">A2</div>
+          <div><div class="an">Areal 200 Vermietung</div><div class="ar2">Mo bis Fr &middot; 08:00 bis 18:00</div></div>
+        </div>
+        <form>
+          <div class="field">
+            <label for="d-name">Name <span class="req">*</span></label>
+            <input id="d-name" type="text" placeholder="Vor- und Nachname" required>
+          </div>
+          <div class="field">
+            <label for="d-mail">E-Mail <span class="req">*</span></label>
+            <input id="d-mail" type="email" placeholder="name@firma.at" required>
+          </div>
+          <div class="field">
+            <label for="d-tel">Telefon</label>
+            <input id="d-tel" type="tel" placeholder="+43 ">
+          </div>
+          <div class="field">
+            <label for="d-msg">Nachricht</label>
+            <textarea id="d-msg" style="min-height:96px" placeholder="Ich interessiere mich f&uuml;r dieses Objekt und bitte um einen Besichtigungstermin."></textarea>
+          </div>
+          <div class="check">
+            <input id="d-dsg" type="checkbox" required>
+            <label for="d-dsg">Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. <a href="#">Datenschutz</a></label>
+          </div>
+          <button type="submit" class="btn btn-pri btn-wide">Anfrage senden <span class="ar">&#8599;</span></button>
+        </form>
+        <div class="aside-note">Antwort in der Regel am selben Werktag.</div>
+      </div>
+      <a href="tel:+4367686219663" class="c-card">
+        <div class="c-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="cl">Lieber anrufen</div><div class="cv">+43 676 86219663</div></div>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- AEHNLICHE OBJEKTE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead" style="margin-bottom:38px">
+      <span class="eyebrow">Weitere Objekte</span>
+      <h2>Das k&ouml;nnte auch passen</h2>
+    </div>
+    <div class="obj-grid">
+      <a href="objektdetail.html" class="obj-card">
+        <div class="obj-img">
+          <img src="https://storage.justimmo.at/thumb/7f59a9538d566112a3f8a70d75341798/fc_h1080_mwebp_w1920/6RKlwlpCuNjfYL8XMjjyfO.jpeg" alt="Sonnige Halle, Lager, Werkstatt im Areal200 – SR3" loading="lazy">
+          <span class="obj-type">Miete</span>
+          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
+          <span class="obj-tag">HALLE / LAGER</span>
+        </div>
+        <div class="obj-b">
+          <div class="obj-loc">2601 Sollenau</div>
+          <h3>Sonnige Halle, Lager, Werkstatt im Areal200 – SR3</h3>
+          <div class="obj-foot">
+            <span class="obj-size">90&nbsp;m&sup2;</span>
+            <span class="obj-price">950&nbsp;&euro;</span>
+          </div>
+        </div>
+      </a>
+      <a href="objektdetail.html" class="obj-card">
+        <div class="obj-img">
+          <img src="https://storage.justimmo.at/thumb/3151e9bfc4836418fe51f881c2303913/fc_h1080_mwebp_w1920/IGKQCARGhplAIvEj0wZm2.jpg" alt="Kompakte Gewerbehalle N19 – Ideal für Ihr Business!" loading="lazy">
+          <span class="obj-type">Miete</span>
+          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
+          <span class="obj-tag">GEWERBEHALLE</span>
+        </div>
+        <div class="obj-b">
+          <div class="obj-loc">2601 Sollenau</div>
+          <h3>Kompakte Gewerbehalle N19 – Ideal für Ihr Business!</h3>
+          <div class="obj-foot">
+            <span class="obj-size">48&nbsp;m&sup2;</span>
+            <span class="obj-price">620&nbsp;&euro;</span>
+          </div>
+        </div>
+      </a>
+      <a href="objektdetail.html" class="obj-card">
+        <div class="obj-img">
+          <img src="https://storage.justimmo.at/thumb/f2225e7cb0f27eefe4648d700f8c6942/fc_h1080_mwebp_w1920/4Eswm1ZoT8ZJs7xMmpPk2n.jpeg" alt="KFZ Werkstatt GmbH vollständig ausgestattet, sofort betriebsbereit" loading="lazy">
+          <span class="obj-type">Miete</span>
+          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
+          <span class="obj-tag">KFZ WERKSTATT</span>
+        </div>
+        <div class="obj-b">
+          <div class="obj-loc">2601 Sollenau</div>
+          <h3>KFZ Werkstatt GmbH vollständig ausgestattet, sofort betriebsbereit</h3>
+          <div class="obj-foot">
+            <span class="obj-size">250&nbsp;m&sup2;</span>
+            <span class="obj-price">3.550&nbsp;&euro;</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <img src="data:image/png;base64,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" alt="Areal 200">
+        <p>Areal 200 ist Ihr verl&auml;sslicher Partner f&uuml;r flexible Gewerbefl&auml;chen in Sollenau.</p>
+        <div class="f-soc">
+          <a href="https://www.facebook.com/Betriebsimmobilien" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/areal200.at/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Navigation</h4>
+        <a href="startseite.html">Startseite</a>
+        <a href="objektliste.html">Freie Objekte</a>
+        <a href="startseite.html#ueber">&Uuml;ber uns</a>
+        <a href="startseite.html#leistungen">Leistungen</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="f-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+4367686219663">+43 676 86219663</a>
+        <a href="tel:+43262848365">B&uuml;ro: +43 2628 483 65</a>
+        <a href="mailto:office@sollenau-immo.at">office@sollenau-immo.at</a>
+        <p>Blumauerstra&szlig;e 200A<br>2601 Sollenau</p>
+      </div>
+      <div class="f-col">
+        <h4>Rechtliches</h4>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; 2026 SBV Immobilien &middot; Areal 200</span>
+      <span>Sollenau &middot; 40 km von Wien</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
