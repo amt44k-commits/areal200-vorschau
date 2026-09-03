@@ -638,7 +638,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     render();
     if (mobile()) {
       // erst die Karte unter die Navigation schieben, dann das Sheet oeffnen (sperrt die Seite dahinter)
-      if (selId) window.scrollTo(0, map.getBoundingClientRect().top + window.scrollY - NAV_H);
+      if (selId) jumpTo(map.getBoundingClientRect().top + window.scrollY - NAV_H);
       setSheet(!!selId);
     }
     if (selId && pan) panTo(E[selId]);
@@ -650,6 +650,15 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   // Sheet mit) und der Plan bleibt im sichtbaren Streifen ueber dem Sheet (sheetFree).
   var sheetFree = 0, lockY = null;
   function sheetOpen() { return panel.classList.contains('open'); }
+  // Die Seite hat html{scroll-behavior:smooth}: ein normales scrollTo animiert ueber ~20 Frames.
+  // Beim Sperren und Entsperren muss die Seite aber SOFORT an der Stelle stehen, sonst liest die
+  // Sperre eine alte Position und beim Minimieren rollt die ganze Seite sichtbar nach unten.
+  function jumpTo(y) {
+    var de = document.documentElement, alt = de.style.scrollBehavior;
+    de.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    de.style.scrollBehavior = alt;
+  }
   function lockBody(on) {
     if (on && lockY === null) {
       lockY = window.scrollY;
@@ -658,7 +667,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     } else if (!on && lockY !== null) {
       document.body.classList.remove('lp-lock');
       document.body.style.top = '';
-      window.scrollTo(0, lockY);
+      jumpTo(lockY);
       lockY = null;
     }
   }
