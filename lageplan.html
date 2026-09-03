@@ -251,17 +251,29 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 /* --- Panel --- */
 .lp-panel{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-l);overflow:hidden;display:flex;flex-direction:column;min-height:0}
 .lp-ph{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
-.lp-ph h2{font-size:18px;font-weight:800}
+.lp-ph h2{font-size:18px;font-weight:800;min-width:0}
+.lp-ph-r{display:flex;align-items:center;gap:10px;flex:none}
 .lp-ph .lp-cnt{font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--grad);padding:5px 11px;border-radius:30px}
-.lp-handle{display:none}
-.lp-pb{overflow:auto;padding:18px 20px 22px;flex:1;min-height:0}
+.lp-handle,.lp-sheet-btn{display:none}
+/* overscroll-behavior: am Ende der Liste scrollt nicht die Seite dahinter weiter */
+.lp-pb{overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:18px 20px 22px;flex:1;min-height:0}
 .lp-hint{font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.5}
 .lp-back{display:inline-flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-weight:600;font-size:13.5px;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin-bottom:14px}
 .lp-back:hover{color:var(--o2)}
 .lp-kicker{font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--o2);margin-bottom:8px}
 .lp-pb h3{font-size:21px;font-weight:800;line-height:1.15;margin-bottom:14px}
-.lp-img{position:relative;aspect-ratio:16/10;border-radius:var(--r-m);overflow:hidden;background:#e9e6e2;margin-bottom:16px}
-.lp-img img{width:100%;height:100%;object-fit:cover}
+/* Wischgalerie: eine Spur mit Scroll-Snap, jedes Foto eine Seite; Pfeile und Zaehler liegen darueber */
+.lp-gal{position:relative;border-radius:var(--r-m);overflow:hidden;background:#e9e6e2;margin-bottom:16px}
+.lp-gal-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.lp-gal-track::-webkit-scrollbar{display:none}
+.lp-slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:16/10}
+.lp-slide img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none}
+.lp-gal-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--ink);font-family:'Outfit',sans-serif;font-size:26px;line-height:1;padding:0 0 3px;cursor:pointer;display:grid;place-items:center;box-shadow:0 6px 16px -8px rgba(20,22,27,.5);transition:.2s;z-index:2}
+.lp-gal-btn:hover{background:#fff;color:var(--o2)}
+.lp-gal-btn.prev{left:10px}
+.lp-gal-btn.next{right:10px}
+.lp-gal-n{position:absolute;right:12px;bottom:10px;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;letter-spacing:.04em;color:#fff;background:rgba(20,22,27,.68);border-radius:20px;padding:4px 10px;z-index:2}
+.lp-gal.einzel .lp-gal-btn,.lp-gal.einzel .lp-gal-n{display:none}
 .lp-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .lp-fact{background:var(--paper);border-radius:var(--r-s);padding:11px 13px}
 .lp-fact small{display:block;font-size:11.5px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
@@ -269,8 +281,6 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 .lp-fact.wide{grid-column:1/-1}
 .lp-actions{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
 .lp-actions .btn{justify-content:center}
-.lp-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.lp-thumbs img{aspect-ratio:4/3;object-fit:cover;border-radius:10px;width:100%}
 .lp-leer{padding:26px 18px;border:1.5px dashed var(--line);border-radius:var(--r-m);text-align:center;color:var(--muted);font-size:14px;line-height:1.55;margin-bottom:16px}
 .lp-leer b{display:block;font-family:'Outfit',sans-serif;color:var(--ink);font-size:16px;margin-bottom:4px}
 /* frei, aber noch ohne Inserat: orange statt grau */
@@ -301,10 +311,20 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   .lp-zoom button{width:34px;height:34px;border-radius:10px;font-size:17px}
   .lp-panel{position:fixed;left:0;right:0;bottom:0;z-index:900;border-radius:22px 22px 0 0;max-height:64vh;transform:translateY(calc(100% - 66px));transition:transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 -14px 40px -18px rgba(20,22,27,.45)}
   .lp-panel.open{transform:none}
-  .lp-ph{cursor:pointer;position:relative;padding-top:22px}
-  .lp-handle{display:block;position:absolute;top:8px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:4px;background:var(--line)}
+  /* touch-action none: Wischen auf der Kopfzeile klappt das Sheet, statt die Seite zu scrollen */
+  .lp-ph{cursor:pointer;position:relative;padding:24px 16px 14px 20px;touch-action:none}
+  .lp-ph h2{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lp-handle{display:block;position:absolute;top:8px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:5px;background:rgba(20,22,27,.28)}
+  /* Knopf "Minimieren" in Markenorange, damit man ihn sofort sieht; Pfeil zeigt bei
+     zugeklapptem Sheet nach oben. Der Zaehler wird dafuer grau, sonst leuchten zwei Pillen. */
+  .lp-ph .lp-cnt{background:rgba(20,22,27,.08);color:var(--ink)}
+  .lp-sheet-btn{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 15px 0 12px;border-radius:30px;border:none;background:var(--grad);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;cursor:pointer;touch-action:none;box-shadow:0 8px 18px -8px rgba(226,73,27,.7)}
+  .lp-sheet-btn svg{width:18px;height:18px;stroke-width:3;transition:transform .3s}
+  .lp-panel:not(.open) .lp-sheet-btn svg{transform:rotate(180deg)}
   .lp-pb{padding-bottom:calc(22px + env(safe-area-inset-bottom))}
   .lp-sec{padding-bottom:80px}
+  /* Seite hinter dem offenen Sheet einfrieren (top wird per JS auf die Scrollposition gesetzt) */
+  body.lp-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 }
 
 </style>
@@ -387,7 +407,11 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
         <div class="lp-ph" id="lp-ph">
           <span class="lp-handle"></span>
           <h2 id="lp-pt">Freie Einheiten</h2>
-          <span class="lp-cnt" id="lp-pc">0</span>
+          <span class="lp-ph-r">
+            <span class="lp-cnt" id="lp-pc">0</span>
+            <!-- nur am Handy sichtbar: klappt das Sheet ein und aus -->
+            <button type="button" class="lp-sheet-btn" id="lp-sheet-btn" aria-label="Einklappen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg><span id="lp-sheet-t">Minimieren</span></button>
+          </span>
         </div>
         <div class="lp-pb" id="lp-pb"></div>
       </aside>
@@ -396,7 +420,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 </section>
 <div style="height:clamp(60px,8vw,96px)"></div>
 
-<script type="application/json" id="lp-data">{"w": 1806, "h": 2468, "flaechen": [{"id": "f1", "nr": 1, "name": "Sportstätte", "poly": "1637.9,776.3 1608,776.7 1605.8,578.7 1640,578 1639.7,562.7 1717.1,561.8 1719.5,764.4 1644.9,765.3"}, {"id": "f2", "nr": 2, "name": "Recyclinganlage", "poly": "1446.6,1034.4 1447.1,978.7 1635.3,980.9 1634,1101.8 1577.9,1101.3 1578.5,1035.6"}, {"id": "f3", "nr": 3, "name": "Fläche 3", "poly": "1507.8,1054.1 1578.2,1054.4 1577.6,1125 1507.5,1124.2"}, {"id": "f4", "nr": 4, "name": "Fläche 4", "poly": "238.3,295.4 221.1,227.7 290.6,210.4 307.4,278"}, {"id": "f5", "nr": 5, "name": "Halle Q2", "poly": "359.3,446.2 283.5,465.2 248.2,323.4 323.7,304.6"}, {"id": "f6", "nr": 6, "name": "Halle Q", "poly": "777.6,697.5 615.4,698.8 614.3,622 727.5,621.4 728.1,666.7 768.6,666.3 777.7,674.1"}, {"id": "f7", "nr": 7, "name": "Stellplätze P1 bis P10", "poly": "366.6,748 727.7,745.8 732.3,884.6 370.8,887", "units": [{"id": "P1", "name": "Garage P1", "cat": "halle", "poly": "658.4,746.2 727.7,745.8 730,815.2 658.9,815.6"}, {"id": "P2", "name": "Garage P2", "cat": "halle", "poly": "730,815.2 732.3,884.6 659.3,885.1 658.9,815.6"}, {"id": "P3", "name": "Garage P3", "cat": "halle", "poly": "585.5,746.7 658.4,746.2 658.9,815.6 585.9,816.1"}, {"id": "P4", "name": "Garage P4", "cat": "halle", "poly": "658.9,815.6 659.3,885.1 586.4,885.6 585.9,816.1"}, {"id": "P5", "name": "Garage P5", "cat": "halle", "poly": "547.1,746.9 585.5,746.7 585.9,816.1 513,816.6 512.5,747.1"}, {"id": "P6", "name": "Garage P6", "cat": "halle", "poly": "585.9,816.1 586.4,885.6 513.4,886.1 513,816.6"}, {"id": "P7", "name": "Garage P7", "cat": "halle", "poly": "512.5,747.1 513,816.6 440,817.1 439.6,747.6"}, {"id": "P8", "name": "Garage P8", "cat": "halle", "poly": "513,816.6 513.4,886.1 440.5,886.5 440,817.1"}, {"id": "P9", "name": "Garage P9", "cat": "halle", "poly": "439.6,747.6 440,817.1 368.7,817.5 366.6,748.1"}, {"id": "P10", "name": "Garage P10", "cat": "halle", "poly": "440,817.1 440.5,886.5 370.8,887 368.7,817.5"}]}, {"id": "f8", "nr": 8, "name": "Halle N2", "poly": "860.6,1188.9 860.5,1160 928,1159.1 929.2,1033.5 928.9,1016.5 878.1,1017.5 878.4,1034.8 860.7,1035.1 860.8,1006.3 928.8,1005.3 927.6,853.2 878.4,853.7 878.7,871.1 861.2,871.4 861.3,842.6 927.5,841.8 926.7,744.5 926.7,727.5 959.7,727.1 959.9,744 972.6,744.1 975,1034.7 972.6,1320.4 926.6,1320.2 928,1170.5 877.6,1171.1 878.2,1188.5", "units": [{"id": "N1", "name": "Halle N1", "cat": "halle", "poly": "930.3,727.5 959.7,727.1 959.9,744 972.6,744.1 972.7,758.4 930.1,758.1"}, {"id": "N2", "name": "Halle N2", "cat": "halle", "poly": "930.1,758.1 972.7,758.4 973,789.7 929.8,789.3"}, {"id": "N3", "name": "Halle N3", "cat": "halle", "poly": "929.8,789.3 973,789.7 973.2,820.9 929.6,820.5"}, {"id": "N4", "name": "Halle N4", "cat": "halle", "poly": "929.6,820.5 973.2,820.9 973.5,852.1 929.3,851.8"}, {"id": "N5", "name": "Halle N5", "cat": "halle", "poly": "929.3,851.8 973.5,852.1 973.8,883.4 929,883"}, {"id": "N6", "name": "Halle N6", "cat": "halle", "poly": "929,883 973.8,883.4 974,914.6 928.8,914.2"}, {"id": "N7", "name": "Halle N7", "cat": "halle", "poly": "928.8,914.2 974,914.6 974.3,945.8 928.5,945.5"}, {"id": "N8", "name": "Halle N8", "cat": "halle", "poly": "928.6,976.7 928.4,956.3 928.5,945.5 974.3,945.8 974.5,977.1"}, {"id": "N9", "name": "Halle N9", "cat": "halle", "poly": "928,1005.3 928.8,1005.3 928.6,976.7 974.5,977.1 974.8,1008.3 928,1007.9"}, {"id": "N10", "name": "Halle N10", "cat": "halle", "poly": "929.1,1039.1 929.2,1033.5 928.9,1016.5 927.9,1016.5 928,1007.9 974.8,1008.3 975,1034.7 975,1039.5"}, {"id": "N11", "name": "Halle N11", "cat": "halle", "poly": "928.8,1070.4 929.1,1039.1 975,1039.5 974.7,1070.8"}, {"id": "N12", "name": "Halle N12", "cat": "halle", "poly": "928.5,1101.6 928.8,1070.4 974.7,1070.8 974.4,1102"}, {"id": "N13", "name": "Halle N13", "cat": "halle", "poly": "928.3,1132.8 928.5,1101.6 974.4,1102 974.2,1133.2"}, {"id": "N14", "name": "Halle N14", "cat": "halle", "poly": "926.7,1159.1 928,1159.1 928.3,1132.8 974.2,1133.2 973.9,1164.4 926.7,1164"}, {"id": "N15", "name": "Halle N15", "cat": "halle", "poly": "926.7,1164 973.9,1164.4 973.6,1195.7 927.8,1195.3 928,1170.5 926.6,1170.5"}, {"id": "N16", "name": "Halle N16", "cat": "halle", "poly": "973.6,1195.7 973.4,1226.9 927.5,1226.5 927.8,1195.3"}, {"id": "N17", "name": "Halle N17", "cat": "halle", "poly": "973.1,1258.1 927.2,1257.7 927.5,1226.5 973.4,1226.9"}, {"id": "N18", "name": "Halle N18", "cat": "halle", "poly": "973.1,1258.1 972.9,1289.4 926.9,1289 927.2,1257.7"}, {"id": "N19", "name": "Halle N19", "cat": "halle", "poly": "972.6,1320.4 926.6,1320.2 926.9,1289 972.9,1289.4"}]}, {"id": "f9", "nr": 9, "name": "Halle N1", "poly": "972.5,1351.4 1078.8,1355.4 1079.1,1348.9 1141.7,1350.7 1141.1,1367.3 1347.9,1376.8 1347.2,1451.5 1142.6,1444.4 1131.8,1443.7 1072.8,1442.1 1069.4,1441.9 945.9,1440 925.8,1412.2 926.2,1352.5 972.3,1353.3"}, {"id": "f10", "nr": 10, "name": "Halle S", "poly": "764.7,1087.1 767.8,1155.2 479.2,1162.9 477.2,1095.1"}, {"id": "f11", "nr": 11, "name": "Fläche 11", "poly": "765.7,1455.9 764.7,1414.3 778.7,1414 779.7,1455.7"}, {"id": "f12", "nr": 12, "name": "Halle F", "poly": "1139.4,1498.1 1384,1498.8 1384,1507.7 1391.9,1514.6 1391.9,1529 1383.9,1533.5 1383.9,1564.6 1392,1571.5 1391.9,1584.7 1384,1591.8 1384,1599 1338.6,1599.3 1139,1598"}, {"id": "f13", "nr": 13, "name": "Halle E", "poly": "1378.8,1634.9 1392.9,1634.8 1393.2,1642.3 1401.3,1649.2 1401.1,1663.4 1393.3,1668.1 1392.5,1717.4 1401.9,1722.2 1402.5,1738.4 1392.5,1744 1392.7,1752.6 1276.6,1752.8 1276.3,1820.2 1208.6,1818.9 1208,1753.1 1139.9,1753.3 1139.9,1633.4 1346.9,1634.6 1346.8,1646.1 1378.6,1646.1"}, {"id": "f14", "nr": 14, "name": "Halle G", "poly": "1359.6,1907 1377.5,1895 1378.5,1889.5 1385,1884.2 1386.6,1882.6 1392.8,1883.6 1396.1,1881.5 1400.3,1881.4 1404.2,1877.1 1414.1,1877 1419.1,1881.1 1420.9,1881 1420.8,1865.8 1451.2,1865.3 1473.9,1841.8 1476.8,1841.9 1482.8,1835.9 1506.8,1835.4 1512.6,1841.1 1559.9,1840.2 1565.8,1834.1 1589,1834.1 1607.6,1849.3 1608.6,1915.6 1596.1,1915.7 1597.9,2035.2 1597.8,2037.4 1596.8,2038.8 1452.6,2041 1452.4,2038.9 1424.9,2039 1377.8,2039.8 1376.2,2038.2 1369.2,2038.3 1362.7,2031.9 1362.6,2024.9 1361.1,2022.8 1360.6,1990.8 1355.5,1985.2 1355.3,1964.6 1360.4,1958.6"}, {"id": "f15", "nr": 15, "name": "Fläche 15", "poly": "526.8,1368 527.7,1403.2 510.2,1403.6 509.2,1368.4"}, {"id": "f16", "nr": 16, "name": "Fläche 16", "poly": "569,1368.3 534.6,1369.2 534.1,1355.8 568.8,1354.9"}, {"id": "f17", "nr": 17, "name": "Halle L", "poly": "727.5,1364 738.6,1772.9 537.8,1777.3 528.3,1369.3"}, {"id": "f18", "nr": 18, "name": "Carport 2", "poly": "831.2,1691.9 829.1,1607 905.7,1605.1 907.4,1690.2 894.4,1690.7 897.2,1808.4 848.8,1809.5 846,1691.8"}, {"id": "f19", "nr": 19, "name": "Halle K", "poly": "965.1,1676.6 965.5,1542.7 1017.7,1542.9 1017.2,1676.5"}, {"id": "f20", "nr": 20, "name": "Carport 1", "poly": "965.5,1542.7 964.7,1754.3 964.5,1829.4 924.9,1829.6 924.5,1689.7 931.8,1689.8 931,1542.7"}, {"id": "f21", "nr": 21, "name": "Carport 3", "poly": "1172.6,1908.4 1195.5,1930.4 1196.2,1970.8 1120.9,1971.9 1121.5,1952.6 927.8,1957.1 928.1,1921.8 775.6,1915.7 767,1541 799.2,1540 802.6,1692.8 817.6,1692.2 821.3,1847.3 886.3,1845.7 908.3,1847.8 929.2,1860.2 947.4,1861.2 966.5,1869.3 983.3,1879.5 1004.4,1879 1025.2,1891.2 1043.4,1892.3 1062.5,1900.4 1079.3,1910.6"}, {"id": "f22", "nr": 22, "name": "Gebäude H", "poly": "1543,2305.6 1447.3,2304.2 1447.2,2300.3 1444,2300 1445.7,2179.4 1510.2,2180.3 1509.5,2227.4 1544.2,2228.1"}, {"id": "f23", "nr": 23, "name": "Gebäude M", "poly": "1544.2,2228.1 1545.4,2113.7 1565.7,2114 1641.8,2113.5 1662.1,2113.6 1662.1,2115.4 1707.1,2115.6 1704.3,2310.1 1659.6,2309.4 1659.6,2310.9 1588,2310.3 1587.8,2307.4 1543.4,2306.7"}, {"id": "f24", "nr": 24, "name": "Halle A", "poly": "1049.4,2302.2 965.9,2301.3 968,2106 968.8,2072.1 1052,2073.1"}, {"id": "f25", "nr": 25, "name": "Halle B", "poly": "1135.7,2301.1 1049.3,2300.2 1052,2073.1 1137.6,2074.1 1137.4,2108.2"}, {"id": "f26", "nr": 26, "name": "Fläche 26", "poly": "1069.8,2126.3 1286.6,2247.3"}, {"id": "f27", "nr": 27, "name": "Halle C", "poly": "1216,2304.8 1180.1,2304.3 1180.1,2302.6 1135.6,2302 1137.4,2108.2 1181.7,2108.6 1181.8,2106.5 1218.2,2107.1"}, {"id": "f28", "nr": 28, "name": "Halle D", "poly": "1296.3,2303.6 1252,2304.2 1216,2304.8 1218.2,2107.1 1253.9,2107.5 1254,2109.3 1298.3,2109.9 1298,2179.3"}, {"id": "f29", "nr": 29, "name": "Fläche 29", "poly": "1314.9,2166.1 1315.3,2130.4 1332.5,2130.4 1332.3,2166.3"}, {"id": "f30", "nr": 30, "name": "Büro SBV", "poly": "1314.9,2119 1314.2,2179.4 1397,2180.2 1396.1,2270.6 1396.3,2300.4 1393,2300.5 1393,2304.6 1370.1,2304.6 1370.3,2266.3 1345.4,2266 1344.8,2304.1 1296.3,2303.6 1298.1,2118.7 1314.9,2119 1297.3,2239.7 1297,2256.8 1321.9,2257.2 1322.2,2240 1297.3,2239.7"}], "zuordnung": {"P1": [14241631], "P7": [16614877], "N3": [15026338], "N15": ["frei"], "N19": [16258240], "f28": [14177836]}, "objekte": {"14241631": {"title": "Große Halle 112m², Werkstatt, Lichtkuppel, Sektionaltor – P1A", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "112&nbsp;m&sup2;", "price": "913,50&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/75882450fc5c64dd593af4c77e6f2571/fc_h1080_mwebp_w1920/4MwoLtsTcGbZSqI0GUZVLr.jpeg", "imgs": ["https://storage.justimmo.at/thumb/170b144f9ce1d7cbff7cacaf275f33a4/fc_h1080_mwebp_w1920/7ICXVzhVmMdEAJkbUWO6KK.jpeg", "https://storage.justimmo.at/thumb/f9fcb4a4b7ee8d82a330bff49f38516f/fc_h1080_mwebp_w1920/2POuK0VneyifuQbL1rjczp.jpeg", "https://storage.justimmo.at/thumb/bce5e189337757d809959101f5fc50fb/fc_h1080_mwebp_w1920/5CnhxEmx2QxXqEwSChkFcP.jpg"], "url": "objektdetail.html"}, "16614877": {"title": "Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "112&nbsp;m&sup2;", "price": "295&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/2aeb7c11709f920e56262fe77bdad823/fc_h1080_mwebp_w1920/1iTIWqwQ9fk1GtmMXCow5f.jpg", "imgs": ["https://storage.justimmo.at/thumb/8bc5511a46c30c233bfac42f0f0ef8e0/fc_h1080_mwebp_w1920/30FAk4SU8kFIx4gsIuEk4h.jpg", "https://storage.justimmo.at/thumb/f342a75aff5cd0432415a2fcde7e47a5/fc_h1080_mwebp_w1920/2T9gbTBU0sigUSHnainBwd.jpg", "https://storage.justimmo.at/thumb/e991ba036b3004ce86ce744f43d5e951/fc_h1080_mwebp_w1920/5lQGjkZKmxQAW36mEwRSRC.jpg"], "url": "objektdetail.html"}, "15026338": {"title": "Große Halle, Werkstatt, Lager 40m² mit Hebebühne – N3", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "40&nbsp;m&sup2;", "price": "443&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/1d2f3f951fa52f6cfa992844c21af1ee/fc_h1080_mwebp_w1920/59pB9b8YHlKS18GlqZRj22.jpeg", "imgs": ["https://storage.justimmo.at/thumb/2b38596790c6019809acef171cbf1770/fc_h1080_mwebp_w1920/1wYZGhzK4sFDubjnJI45T3.jpeg", "https://storage.justimmo.at/thumb/6b0b9a19bc6a42455af998fbb2342700/fc_h1080_mwebp_w1920/2w5JgfSLa2FIT8cmRY1CL0.jpeg", "https://storage.justimmo.at/thumb/c5853348ca11048351b8363f1ea39959/fc_h1080_mwebp_w1920/63wORGqosncdBxQKP3TSl.jpeg"], "url": "objektdetail.html"}, "16258240": {"title": "Kompakte Gewerbehalle N19 – Ideal für Ihr Business!", "tag": "GEWERBEHALLE", "cat": "halle", "type": "miete", "size": "48&nbsp;m&sup2;", "price": "620&nbsp;&euro;", "provision": false, "img": "https://storage.justimmo.at/thumb/3151e9bfc4836418fe51f881c2303913/fc_h1080_mwebp_w1920/IGKQCARGhplAIvEj0wZm2.jpg", "imgs": ["https://storage.justimmo.at/thumb/4ee774390acd4056dc4481f29cb0bd19/fc_h1080_mwebp_w1920/5wy6EAy1qkQe5hToMq3zIv.jpeg", "https://storage.justimmo.at/thumb/a306ab3fb9f8fa7a71002b8ca04cbbe2/fc_h1080_mwebp_w1920/7dPuq5If4g2c3fUFrtrfuW.jpeg", "https://storage.justimmo.at/thumb/796e9ddb53d3d3d0afd33004b9c438d7/fc_h1080_mwebp_w1920/4XHk8oLiBw0R1I9G5QbdWb.jpeg"], "url": "objektdetail.html"}, "14177836": {"title": "Halle, Lager, Werkstatt, Ausstellungsraum ca. 90 m² – D1", "tag": "HALLE / LAGER", "cat": "halle", "type": "miete", "size": "90&nbsp;m&sup2;", "price": "840&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/110a8924ac2aad0c9842fb2e857f1061/fc_h1080_mwebp_w1920/1qn9tLsJFC3O5Rmf4SsdcN.jpg", "imgs": ["https://storage.justimmo.at/thumb/88584d350b086210bed32e84ee3da971/fc_h1080_mwebp_w1920/23e8UzyoMBTvdJMShichtz.jpg", "https://storage.justimmo.at/thumb/81cef7a1d8babb8e752e9c20e10e88dd/fc_h1080_mwebp_w1920/2o7WBJHvlmFcyRBAguNVqL.jpg", "https://storage.justimmo.at/thumb/9eba3d64584020cb2fb7cfce63aa3775/fc_h1080_mwebp_w1920/2vJtaHekZS7KE1mUJ6UoHL.jpeg"], "url": "objektdetail.html"}}}</script>
+<script type="application/json" id="lp-data">{"w": 1806, "h": 2468, "flaechen": [{"id": "f1", "nr": 1, "name": "Sportstätte", "poly": "1637.9,776.3 1608,776.7 1605.8,578.7 1640,578 1639.7,562.7 1717.1,561.8 1719.5,764.4 1644.9,765.3"}, {"id": "f2", "nr": 2, "name": "Recyclinganlage", "poly": "1446.6,1034.4 1447.1,978.7 1635.3,980.9 1634,1101.8 1577.9,1101.3 1578.5,1035.6"}, {"id": "f3", "nr": 3, "name": "Fläche 3", "poly": "1507.8,1054.1 1578.2,1054.4 1577.6,1125 1507.5,1124.2"}, {"id": "f4", "nr": 4, "name": "Fläche 4", "poly": "238.3,295.4 221.1,227.7 290.6,210.4 307.4,278"}, {"id": "f5", "nr": 5, "name": "Halle Q2", "poly": "359.3,446.2 283.5,465.2 248.2,323.4 323.7,304.6"}, {"id": "f6", "nr": 6, "name": "Halle Q", "poly": "777.6,697.5 615.4,698.8 614.3,622 727.5,621.4 728.1,666.7 768.6,666.3 777.7,674.1"}, {"id": "f7", "nr": 7, "name": "Stellplätze P1 bis P10", "poly": "366.6,748 727.7,745.8 732.3,884.6 370.8,887", "units": [{"id": "P1", "name": "Garage P1", "cat": "halle", "poly": "658.4,746.2 727.7,745.8 730,815.2 658.9,815.6"}, {"id": "P2", "name": "Garage P2", "cat": "halle", "poly": "730,815.2 732.3,884.6 659.3,885.1 658.9,815.6"}, {"id": "P3", "name": "Garage P3", "cat": "halle", "poly": "585.5,746.7 658.4,746.2 658.9,815.6 585.9,816.1"}, {"id": "P4", "name": "Garage P4", "cat": "halle", "poly": "658.9,815.6 659.3,885.1 586.4,885.6 585.9,816.1"}, {"id": "P5", "name": "Garage P5", "cat": "halle", "poly": "547.1,746.9 585.5,746.7 585.9,816.1 513,816.6 512.5,747.1"}, {"id": "P6", "name": "Garage P6", "cat": "halle", "poly": "585.9,816.1 586.4,885.6 513.4,886.1 513,816.6"}, {"id": "P7", "name": "Garage P7", "cat": "halle", "poly": "512.5,747.1 513,816.6 440,817.1 439.6,747.6"}, {"id": "P8", "name": "Garage P8", "cat": "halle", "poly": "513,816.6 513.4,886.1 440.5,886.5 440,817.1"}, {"id": "P9", "name": "Garage P9", "cat": "halle", "poly": "439.6,747.6 440,817.1 368.7,817.5 366.6,748.1"}, {"id": "P10", "name": "Garage P10", "cat": "halle", "poly": "440,817.1 440.5,886.5 370.8,887 368.7,817.5"}]}, {"id": "f8", "nr": 8, "name": "Halle N2", "poly": "860.6,1188.9 860.5,1160 928,1159.1 929.2,1033.5 928.9,1016.5 878.1,1017.5 878.4,1034.8 860.7,1035.1 860.8,1006.3 928.8,1005.3 927.6,853.2 878.4,853.7 878.7,871.1 861.2,871.4 861.3,842.6 927.5,841.8 926.7,744.5 926.7,727.5 959.7,727.1 959.9,744 972.6,744.1 975,1034.7 972.6,1320.4 926.6,1320.2 928,1170.5 877.6,1171.1 878.2,1188.5", "units": [{"id": "N1", "name": "Halle N1", "cat": "halle", "poly": "930.3,727.5 959.7,727.1 959.9,744 972.6,744.1 972.7,758.4 930.1,758.1"}, {"id": "N2", "name": "Halle N2", "cat": "halle", "poly": "930.1,758.1 972.7,758.4 973,789.7 929.8,789.3"}, {"id": "N3", "name": "Halle N3", "cat": "halle", "poly": "929.8,789.3 973,789.7 973.2,820.9 929.6,820.5"}, {"id": "N4", "name": "Halle N4", "cat": "halle", "poly": "929.6,820.5 973.2,820.9 973.5,852.1 929.3,851.8"}, {"id": "N5", "name": "Halle N5", "cat": "halle", "poly": "929.3,851.8 973.5,852.1 973.8,883.4 929,883"}, {"id": "N6", "name": "Halle N6", "cat": "halle", "poly": "929,883 973.8,883.4 974,914.6 928.8,914.2"}, {"id": "N7", "name": "Halle N7", "cat": "halle", "poly": "928.8,914.2 974,914.6 974.3,945.8 928.5,945.5"}, {"id": "N8", "name": "Halle N8", "cat": "halle", "poly": "928.6,976.7 928.4,956.3 928.5,945.5 974.3,945.8 974.5,977.1"}, {"id": "N9", "name": "Halle N9", "cat": "halle", "poly": "928,1005.3 928.8,1005.3 928.6,976.7 974.5,977.1 974.8,1008.3 928,1007.9"}, {"id": "N10", "name": "Halle N10", "cat": "halle", "poly": "929.1,1039.1 929.2,1033.5 928.9,1016.5 927.9,1016.5 928,1007.9 974.8,1008.3 975,1034.7 975,1039.5"}, {"id": "N11", "name": "Halle N11", "cat": "halle", "poly": "928.8,1070.4 929.1,1039.1 975,1039.5 974.7,1070.8"}, {"id": "N12", "name": "Halle N12", "cat": "halle", "poly": "928.5,1101.6 928.8,1070.4 974.7,1070.8 974.4,1102"}, {"id": "N13", "name": "Halle N13", "cat": "halle", "poly": "928.3,1132.8 928.5,1101.6 974.4,1102 974.2,1133.2"}, {"id": "N14", "name": "Halle N14", "cat": "halle", "poly": "926.7,1159.1 928,1159.1 928.3,1132.8 974.2,1133.2 973.9,1164.4 926.7,1164"}, {"id": "N15", "name": "Halle N15", "cat": "halle", "poly": "926.7,1164 973.9,1164.4 973.6,1195.7 927.8,1195.3 928,1170.5 926.6,1170.5"}, {"id": "N16", "name": "Halle N16", "cat": "halle", "poly": "973.6,1195.7 973.4,1226.9 927.5,1226.5 927.8,1195.3"}, {"id": "N17", "name": "Halle N17", "cat": "halle", "poly": "973.1,1258.1 927.2,1257.7 927.5,1226.5 973.4,1226.9"}, {"id": "N18", "name": "Halle N18", "cat": "halle", "poly": "973.1,1258.1 972.9,1289.4 926.9,1289 927.2,1257.7"}, {"id": "N19", "name": "Halle N19", "cat": "halle", "poly": "972.6,1320.4 926.6,1320.2 926.9,1289 972.9,1289.4"}]}, {"id": "f9", "nr": 9, "name": "Halle N1", "poly": "972.5,1351.4 1078.8,1355.4 1079.1,1348.9 1141.7,1350.7 1141.1,1367.3 1347.9,1376.8 1347.2,1451.5 1142.6,1444.4 1131.8,1443.7 1072.8,1442.1 1069.4,1441.9 945.9,1440 925.8,1412.2 926.2,1352.5 972.3,1353.3"}, {"id": "f10", "nr": 10, "name": "Halle S", "poly": "764.7,1087.1 767.8,1155.2 479.2,1162.9 477.2,1095.1"}, {"id": "f11", "nr": 11, "name": "Fläche 11", "poly": "765.7,1455.9 764.7,1414.3 778.7,1414 779.7,1455.7"}, {"id": "f12", "nr": 12, "name": "Halle F", "poly": "1139.4,1498.1 1384,1498.8 1384,1507.7 1391.9,1514.6 1391.9,1529 1383.9,1533.5 1383.9,1564.6 1392,1571.5 1391.9,1584.7 1384,1591.8 1384,1599 1338.6,1599.3 1139,1598"}, {"id": "f13", "nr": 13, "name": "Halle E", "poly": "1378.8,1634.9 1392.9,1634.8 1393.2,1642.3 1401.3,1649.2 1401.1,1663.4 1393.3,1668.1 1392.5,1717.4 1401.9,1722.2 1402.5,1738.4 1392.5,1744 1392.7,1752.6 1276.6,1752.8 1276.3,1820.2 1208.6,1818.9 1208,1753.1 1139.9,1753.3 1139.9,1633.4 1346.9,1634.6 1346.8,1646.1 1378.6,1646.1"}, {"id": "f14", "nr": 14, "name": "Halle G", "poly": "1359.6,1907 1377.5,1895 1378.5,1889.5 1385,1884.2 1386.6,1882.6 1392.8,1883.6 1396.1,1881.5 1400.3,1881.4 1404.2,1877.1 1414.1,1877 1419.1,1881.1 1420.9,1881 1420.8,1865.8 1451.2,1865.3 1473.9,1841.8 1476.8,1841.9 1482.8,1835.9 1506.8,1835.4 1512.6,1841.1 1559.9,1840.2 1565.8,1834.1 1589,1834.1 1607.6,1849.3 1608.6,1915.6 1596.1,1915.7 1597.9,2035.2 1597.8,2037.4 1596.8,2038.8 1452.6,2041 1452.4,2038.9 1424.9,2039 1377.8,2039.8 1376.2,2038.2 1369.2,2038.3 1362.7,2031.9 1362.6,2024.9 1361.1,2022.8 1360.6,1990.8 1355.5,1985.2 1355.3,1964.6 1360.4,1958.6"}, {"id": "f15", "nr": 15, "name": "Fläche 15", "poly": "526.8,1368 527.7,1403.2 510.2,1403.6 509.2,1368.4"}, {"id": "f16", "nr": 16, "name": "Fläche 16", "poly": "569,1368.3 534.6,1369.2 534.1,1355.8 568.8,1354.9"}, {"id": "f17", "nr": 17, "name": "Halle L", "poly": "727.5,1364 738.6,1772.9 537.8,1777.3 528.3,1369.3"}, {"id": "f18", "nr": 18, "name": "Carport 2", "poly": "831.2,1691.9 829.1,1607 905.7,1605.1 907.4,1690.2 894.4,1690.7 897.2,1808.4 848.8,1809.5 846,1691.8"}, {"id": "f19", "nr": 19, "name": "Halle K", "poly": "965.1,1676.6 965.5,1542.7 1017.7,1542.9 1017.2,1676.5"}, {"id": "f20", "nr": 20, "name": "Carport 1", "poly": "965.5,1542.7 964.7,1754.3 964.5,1829.4 924.9,1829.6 924.5,1689.7 931.8,1689.8 931,1542.7"}, {"id": "f21", "nr": 21, "name": "Carport 3", "poly": "1172.6,1908.4 1195.5,1930.4 1196.2,1970.8 1120.9,1971.9 1121.5,1952.6 927.8,1957.1 928.1,1921.8 775.6,1915.7 767,1541 799.2,1540 802.6,1692.8 817.6,1692.2 821.3,1847.3 886.3,1845.7 908.3,1847.8 929.2,1860.2 947.4,1861.2 966.5,1869.3 983.3,1879.5 1004.4,1879 1025.2,1891.2 1043.4,1892.3 1062.5,1900.4 1079.3,1910.6"}, {"id": "f22", "nr": 22, "name": "Gebäude H", "poly": "1543,2305.6 1447.3,2304.2 1447.2,2300.3 1444,2300 1445.7,2179.4 1510.2,2180.3 1509.5,2227.4 1544.2,2228.1"}, {"id": "f23", "nr": 23, "name": "Gebäude M", "poly": "1544.2,2228.1 1545.4,2113.7 1565.7,2114 1641.8,2113.5 1662.1,2113.6 1662.1,2115.4 1707.1,2115.6 1704.3,2310.1 1659.6,2309.4 1659.6,2310.9 1588,2310.3 1587.8,2307.4 1543.4,2306.7"}, {"id": "f24", "nr": 24, "name": "Halle A", "poly": "1049.4,2302.2 965.9,2301.3 968,2106 968.8,2072.1 1052,2073.1"}, {"id": "f25", "nr": 25, "name": "Halle B", "poly": "1135.7,2301.1 1049.3,2300.2 1052,2073.1 1137.6,2074.1 1137.4,2108.2"}, {"id": "f26", "nr": 26, "name": "Fläche 26", "poly": "1069.8,2126.3 1286.6,2247.3"}, {"id": "f27", "nr": 27, "name": "Halle C", "poly": "1216,2304.8 1180.1,2304.3 1180.1,2302.6 1135.6,2302 1137.4,2108.2 1181.7,2108.6 1181.8,2106.5 1218.2,2107.1"}, {"id": "f28", "nr": 28, "name": "Halle D", "poly": "1296.3,2303.6 1252,2304.2 1216,2304.8 1218.2,2107.1 1253.9,2107.5 1254,2109.3 1298.3,2109.9 1298,2179.3"}, {"id": "f29", "nr": 29, "name": "Fläche 29", "poly": "1314.9,2166.1 1315.3,2130.4 1332.5,2130.4 1332.3,2166.3"}, {"id": "f30", "nr": 30, "name": "Büro SBV", "poly": "1314.9,2119 1314.2,2179.4 1397,2180.2 1396.1,2270.6 1396.3,2300.4 1393,2300.5 1393,2304.6 1370.1,2304.6 1370.3,2266.3 1345.4,2266 1344.8,2304.1 1296.3,2303.6 1298.1,2118.7 1314.9,2119 1297.3,2239.7 1297,2256.8 1321.9,2257.2 1322.2,2240 1297.3,2239.7"}], "zuordnung": {"P1": [14241631], "P7": [16614877], "N3": [15026338], "N15": ["frei"], "N19": [16258240], "f28": [14177836]}, "objekte": {"14241631": {"title": "Große Halle 112m², Werkstatt, Lichtkuppel, Sektionaltor – P1A", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "112&nbsp;m&sup2;", "price": "913,50&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/75882450fc5c64dd593af4c77e6f2571/fc_h1080_mwebp_w1920/4MwoLtsTcGbZSqI0GUZVLr.jpeg", "imgs": ["https://storage.justimmo.at/thumb/170b144f9ce1d7cbff7cacaf275f33a4/fc_h1080_mwebp_w1920/7ICXVzhVmMdEAJkbUWO6KK.jpeg", "https://storage.justimmo.at/thumb/f9fcb4a4b7ee8d82a330bff49f38516f/fc_h1080_mwebp_w1920/2POuK0VneyifuQbL1rjczp.jpeg", "https://storage.justimmo.at/thumb/bce5e189337757d809959101f5fc50fb/fc_h1080_mwebp_w1920/5CnhxEmx2QxXqEwSChkFcP.jpg", "https://storage.justimmo.at/thumb/87a5421185266cfc42119546b9dca0eb/fc_h1080_mwebp_w1920/seA0XIVENV5iDeXJ7OMtd.jpg", "https://storage.justimmo.at/thumb/caebabb6943de396e1cbf8104c602aa7/fc_h1080_mwebp_w1920/WMnRW2mbI1zpWnU9TQqDu.jpg"], "url": "objektdetail.html"}, "16614877": {"title": "Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "112&nbsp;m&sup2;", "price": "295&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/2aeb7c11709f920e56262fe77bdad823/fc_h1080_mwebp_w1920/1iTIWqwQ9fk1GtmMXCow5f.jpg", "imgs": ["https://storage.justimmo.at/thumb/8bc5511a46c30c233bfac42f0f0ef8e0/fc_h1080_mwebp_w1920/30FAk4SU8kFIx4gsIuEk4h.jpg", "https://storage.justimmo.at/thumb/f342a75aff5cd0432415a2fcde7e47a5/fc_h1080_mwebp_w1920/2T9gbTBU0sigUSHnainBwd.jpg", "https://storage.justimmo.at/thumb/e991ba036b3004ce86ce744f43d5e951/fc_h1080_mwebp_w1920/5lQGjkZKmxQAW36mEwRSRC.jpg"], "url": "objektdetail.html"}, "15026338": {"title": "Große Halle, Werkstatt, Lager 40m² mit Hebebühne – N3", "tag": "HALLE / WERKSTATT", "cat": "halle", "type": "miete", "size": "40&nbsp;m&sup2;", "price": "443&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/1d2f3f951fa52f6cfa992844c21af1ee/fc_h1080_mwebp_w1920/59pB9b8YHlKS18GlqZRj22.jpeg", "imgs": ["https://storage.justimmo.at/thumb/2b38596790c6019809acef171cbf1770/fc_h1080_mwebp_w1920/1wYZGhzK4sFDubjnJI45T3.jpeg", "https://storage.justimmo.at/thumb/6b0b9a19bc6a42455af998fbb2342700/fc_h1080_mwebp_w1920/2w5JgfSLa2FIT8cmRY1CL0.jpeg", "https://storage.justimmo.at/thumb/c5853348ca11048351b8363f1ea39959/fc_h1080_mwebp_w1920/63wORGqosncdBxQKP3TSl.jpeg", "https://storage.justimmo.at/thumb/633dc4d0831866dc7809d5f8d3f70d23/fc_h1080_mwebp_w1920/1skD9TCYnDNxHXrdlAw7Ni.jpeg", "https://storage.justimmo.at/thumb/372c4cf731fbec2f89abe3f107b5a98b/fc_h1080_mwebp_w1920/5ozt2d1iSnPoYCD7fC114X.jpeg"], "url": "objektdetail.html"}, "16258240": {"title": "Kompakte Gewerbehalle N19 – Ideal für Ihr Business!", "tag": "GEWERBEHALLE", "cat": "halle", "type": "miete", "size": "48&nbsp;m&sup2;", "price": "620&nbsp;&euro;", "provision": false, "img": "https://storage.justimmo.at/thumb/3151e9bfc4836418fe51f881c2303913/fc_h1080_mwebp_w1920/IGKQCARGhplAIvEj0wZm2.jpg", "imgs": ["https://storage.justimmo.at/thumb/4ee774390acd4056dc4481f29cb0bd19/fc_h1080_mwebp_w1920/5wy6EAy1qkQe5hToMq3zIv.jpeg", "https://storage.justimmo.at/thumb/a306ab3fb9f8fa7a71002b8ca04cbbe2/fc_h1080_mwebp_w1920/7dPuq5If4g2c3fUFrtrfuW.jpeg", "https://storage.justimmo.at/thumb/796e9ddb53d3d3d0afd33004b9c438d7/fc_h1080_mwebp_w1920/4XHk8oLiBw0R1I9G5QbdWb.jpeg", "https://storage.justimmo.at/thumb/56e1e4ba6212869cc65a3ee3d8b0ce49/fc_h1080_mwebp_w1920/4m5yCZeLew8MbijhlLdQEc.jpeg", "https://storage.justimmo.at/thumb/d04f4ba8b6fcf0a41d8a3cc22b56f3c8/fc_h1080_mwebp_w1920/3QjtNPHelonGgaEtwZyuh.jpeg"], "url": "objektdetail.html"}, "14177836": {"title": "Halle, Lager, Werkstatt, Ausstellungsraum ca. 90 m² – D1", "tag": "HALLE / LAGER", "cat": "halle", "type": "miete", "size": "90&nbsp;m&sup2;", "price": "840&nbsp;&euro;", "provision": true, "img": "https://storage.justimmo.at/thumb/110a8924ac2aad0c9842fb2e857f1061/fc_h1080_mwebp_w1920/1qn9tLsJFC3O5Rmf4SsdcN.jpg", "imgs": ["https://storage.justimmo.at/thumb/88584d350b086210bed32e84ee3da971/fc_h1080_mwebp_w1920/23e8UzyoMBTvdJMShichtz.jpg", "https://storage.justimmo.at/thumb/81cef7a1d8babb8e752e9c20e10e88dd/fc_h1080_mwebp_w1920/2o7WBJHvlmFcyRBAguNVqL.jpg", "https://storage.justimmo.at/thumb/9eba3d64584020cb2fb7cfce63aa3775/fc_h1080_mwebp_w1920/2vJtaHekZS7KE1mUJ6UoHL.jpeg", "https://storage.justimmo.at/thumb/7b09f0bdf83596d7e9e592756237ec48/fc_h1080_mwebp_w1920/1NbMsCpfQRuKfajgBxyYju.jpeg", "https://storage.justimmo.at/thumb/974f69b9b38c2413eb3ec8b29daa57ad/fc_h1080_mwebp_w1920/6LaBKIOHReWLTf5QuiSMRi.jpg"], "url": "objektdetail.html"}}}</script>
 <script>
 (function () {
   var D = JSON.parse(document.getElementById('lp-data').textContent);
@@ -524,18 +548,46 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     return '<div class="lp-leer lp-frei"><b>Frei zur Miete</b>F&uuml;r diese Einheit gibt es noch kein Inserat. Fragen Sie direkt bei uns an, wir nennen Ihnen Fl&auml;che und Miete.</div>' +
       '<div class="lp-actions"><a href="kontakt.html" class="btn btn-pri">' + hx(e.name) + ' anfragen</a></div>';
   }
-  function detail(o) {
+  // Fotos als Wischgalerie (Scroll-Snap): am Handy wischen, am Desktop Pfeile
+  function galerie(o) {
+    var pics = [o.img].concat(o.imgs);
+    var slides = pics.map(function (src, i) {
+      return '<div class="lp-slide"><img src="' + src + '" alt="' + (i ? '' : o.title) + '" loading="' + (i ? 'lazy' : 'eager') + '" draggable="false"></div>';
+    }).join('');
+    return '<div class="lp-gal' + (pics.length < 2 ? ' einzel' : '') + '"><div class="lp-gal-track">' + slides + '</div>' +
+      '<span class="obj-type' + (o.type === 'kauf' ? ' kauf' : '') + '">' + (o.type === 'kauf' ? 'Kauf' : 'Miete') + '</span>' +
+      '<button type="button" class="lp-gal-btn prev" aria-label="Vorheriges Foto">&lsaquo;</button>' +
+      '<button type="button" class="lp-gal-btn next" aria-label="N&auml;chstes Foto">&rsaquo;</button>' +
+      '<span class="lp-gal-n">1 / ' + pics.length + '</span></div>';
+  }
+  function initGal() {
+    var g = pb.querySelector('.lp-gal');
+    if (!g) return;
+    var track = g.querySelector('.lp-gal-track'), n = g.querySelector('.lp-gal-n');
+    function upd() {
+      var k = track.children.length;
+      var i = Math.min(k, Math.round(track.scrollLeft / Math.max(1, track.clientWidth)) + 1);
+      n.textContent = i + ' / ' + k;
+      g.classList.toggle('einzel', k < 2);
+    }
     // Einzelne justImmo-Bilder sind inzwischen 404, die fallen dann einfach weg
-    var thumbs = o.imgs.length ? '<div class="lp-thumbs">' + o.imgs.map(function (s) { return '<img src="' + s + '" alt="" loading="lazy" onerror="this.remove()">'; }).join('') + '</div>' : '';
-    return '<div class="lp-img"><img src="' + o.img + '" alt="' + o.title + '"><span class="obj-type' + (o.type === 'kauf' ? ' kauf' : '') + '">' + (o.type === 'kauf' ? 'Kauf' : 'Miete') + '</span></div>' +
+    track.querySelectorAll('img').forEach(function (im) {
+      im.onerror = function () { if (im.parentNode) im.parentNode.remove(); upd(); };
+    });
+    track.addEventListener('scroll', upd, { passive: true });
+    g.querySelector('.prev').onclick = function () { track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }); };
+    g.querySelector('.next').onclick = function () { track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); };
+    upd();
+  }
+  function detail(o) {
+    return galerie(o) +
       '<h3>' + o.title + '</h3>' +
       '<div class="lp-facts">' +
       '<div class="lp-fact"><small>Fl&auml;che</small><b>' + o.size + '</b></div>' +
       '<div class="lp-fact"><small>' + (o.type === 'kauf' ? 'Kaufpreis' : 'Miete pro Monat') + '</small><b>' + o.price + '</b></div>' +
       '<div class="lp-fact wide"><small>Provision</small><b>' + (o.provision ? 'provisionspflichtig' : 'provisionsfrei') + '</b></div>' +
       '</div>' +
-      '<div class="lp-actions"><a href="' + o.url + '" class="btn btn-pri">Objekt ansehen <span class="ar">&#8599;</span></a><a href="kontakt.html" class="btn btn-out">Anfragen</a></div>' +
-      thumbs;
+      '<div class="lp-actions"><a href="' + o.url + '" class="btn btn-pri">Objekt ansehen <span class="ar">&#8599;</span></a><a href="kontakt.html" class="btn btn-out">Anfragen</a></div>';
   }
   function suchauftrag() {
     return '<a href="kontakt.html" class="btn btn-out btn-wide">Suchauftrag stellen</a>';
@@ -576,27 +628,75 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
         '</div>' + suchauftrag();
     }
     pb.innerHTML = h;
+    initGal();
     $('lp-back').onclick = function () { select(null, false); };
   }
   function select(id, pan) {
     if (selId && E[selId]) E[selId].shape.classList.remove('sel');
     selId = id && E[id] ? id : null;
-    if (selId) {
-      E[selId].shape.classList.add('sel');
-      if (pan) panTo(E[selId]);
-    }
+    if (selId) E[selId].shape.classList.add('sel');
     render();
     if (mobile()) {
-      panel.classList.toggle('open', !!selId);
-      if (selId) window.scrollTo({ top: map.getBoundingClientRect().top + window.scrollY - NAV_H, behavior: 'smooth' });
+      // erst die Karte unter die Navigation schieben, dann das Sheet oeffnen (sperrt die Seite dahinter)
+      if (selId) window.scrollTo(0, map.getBoundingClientRect().top + window.scrollY - NAV_H);
+      setSheet(!!selId);
     }
+    if (selId && pan) panTo(E[selId]);
     pb.scrollTop = 0;
   }
-  $('lp-ph').onclick = function () { if (mobile()) panel.classList.toggle('open'); };
+
+  // ---------------------------------------------------------------- Bottom Sheet (Handy)
+  // Bei offenem Sheet ist die Seite dahinter gesperrt (sonst scrollt sie beim Wischen im
+  // Sheet mit) und der Plan bleibt im sichtbaren Streifen ueber dem Sheet (sheetFree).
+  var sheetFree = 0, lockY = null;
+  function sheetOpen() { return panel.classList.contains('open'); }
+  function lockBody(on) {
+    if (on && lockY === null) {
+      lockY = window.scrollY;
+      document.body.style.top = -lockY + 'px';
+      document.body.classList.add('lp-lock');
+    } else if (!on && lockY !== null) {
+      document.body.classList.remove('lp-lock');
+      document.body.style.top = '';
+      window.scrollTo(0, lockY);
+      lockY = null;
+    }
+  }
+  function setSheet(open) {
+    if (!mobile()) return;
+    panel.classList.toggle('open', open);
+    var r = map.getBoundingClientRect();
+    sheetFree = open ? Math.max(0, r.height - visStrip(r)) : 0;
+    $('lp-sheet-t').textContent = open ? 'Minimieren' : 'Öffnen';
+    $('lp-sheet-btn').setAttribute('aria-label', open ? 'Einklappen' : 'Ausklappen');
+    lockBody(open);
+    apply(true);
+  }
+  // Kopfzeile: Tippen klappt um, nach unten wischen schliesst, nach oben wischen oeffnet
+  var ph = $('lp-ph'), phY = null;
+  ph.addEventListener('pointerdown', function (ev) { if (mobile()) phY = ev.clientY; });
+  ph.addEventListener('pointerup', function (ev) {
+    if (phY === null) return;
+    var dy = ev.clientY - phY;
+    phY = null;
+    if (dy > 40) setSheet(false);
+    else if (dy < -40) setSheet(true);
+    else setSheet(!sheetOpen());
+  });
+  ph.addEventListener('pointercancel', function () { phY = null; });
 
   // ---------------------------------------------------------------- Ansicht (Zoom und Verschieben)
   var s = 1, tx = 0, ty = 0, fit = 1;
+  // Der Plan darf nicht aus der Karte geschoben werden: ist er kleiner als die Karte, steht er
+  // mittig, sonst bleibt die Karte immer ganz mit Plan gefuellt (kein Rand, kein Verlieren).
+  function clampView() {
+    var r = map.getBoundingClientRect();
+    var w = W * s, h = H * s, hv = r.height - sheetFree;
+    tx = w <= r.width ? (r.width - w) / 2 : Math.min(0, Math.max(r.width - w, tx));
+    ty = h <= hv ? (hv - h) / 2 : Math.min(0, Math.max(hv - h, ty));
+  }
   function apply(anim) {
+    clampView();
     canvas.style.transition = anim ? 'transform .45s cubic-bezier(.2,.8,.2,1)' : 'none';
     canvas.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
     canvas.classList.toggle('zoomed', s > fit * 1.6);
@@ -624,11 +724,12 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     apply(anim);
   }
   var NAV_H = 76;   // sichtbare Hoehe der klebenden Navigation
+  // Am Handy liegt das Bottom Sheet (64vh) ueber der Karte: sichtbar bleibt nur der
+  // Streifen zwischen Navigation und Sheet (Karte wird vorher unter die Nav gescrollt).
+  function visStrip(r) { return mobile() ? Math.min(r.height, Math.max(120, window.innerHeight * 0.36 - NAV_H)) : r.height; }
   function panTo(e) {
     var b = bbox(e.poly), r = map.getBoundingClientRect();
-    // Am Handy liegt das Bottom Sheet (64vh) ueber der Karte: die Einheit wird im
-    // sichtbaren Streifen oberhalb des Sheets zentriert (Karte wird dorthin gescrollt).
-    var vis = mobile() ? Math.min(r.height, Math.max(120, window.innerHeight * 0.36 - NAV_H)) : r.height;
+    var vis = visStrip(r);
     s = clampS(Math.max(s, fit * 2.6));
     tx = r.width / 2 - b.cx * s;
     ty = vis / 2 - b.cy * s;
@@ -744,7 +845,11 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 
   var lastW = window.innerWidth;
   window.addEventListener('resize', function () {
-    if (window.innerWidth !== lastW) { lastW = window.innerWidth; fitView(false); }
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    // vom Handy- ins Desktop-Layout gedreht: Sheet-Zustand und Seitensperre aufheben
+    if (!mobile()) { lockBody(false); sheetFree = 0; panel.classList.remove('open'); }
+    fitView(false);
   });
 
   fitView(false);
