@@ -276,7 +276,11 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 }
 @media(max-width:720px){
   .hero-bg img{object-position:0% 50%}
-  .about-badge{left:14px;right:14px;bottom:14px}
+  /* Kunde 03.09.2026: Plakette am Handy kleiner und ganz nach unten, sie soll nur
+     den unteren Rand des Fotos bedecken (haengt 16 px ueber die Bildkante hinaus) */
+  .about-badge{left:14px;right:auto;bottom:-16px;padding:14px 18px}
+  .about-badge .bn{font-size:28px}
+  .about-badge .bl{font-size:12px;margin-top:3px}
 }
 
 </style>
