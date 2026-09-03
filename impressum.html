@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Freie Objekte - AREAL 200 Sollenau</title>
-<meta name="description" content="Alle aktuell freien Hallen, Lager, Bueros und Stellplaetze im Areal 200 in Sollenau.">
+<title>Impressum - AREAL 200 Sollenau</title>
+<meta name="description" content="Impressum und Offenlegung der SBV Immobilienvermietungs GmbH, Betreiberin des Areal 200 in Sollenau.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -188,35 +188,47 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 
 </style>
 <style>
-/* Objektliste */
-.filterbar{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-l);padding:22px 24px;box-shadow:0 10px 34px -26px rgba(20,22,27,.5);margin-top:-46px;position:relative;z-index:3}
-.fb-row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
-.fb-row + .fb-row{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-.fb-search{flex:1 1 260px;position:relative;min-width:220px}
-.fb-search input{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-pill);padding:12px 16px 12px 44px;font-size:15px;transition:border-color .2s,box-shadow .2s}
-.fb-search input:focus{outline:none;border-color:var(--o2);box-shadow:0 0 0 4px rgba(239,108,36,.12);background:var(--paper2)}
-.fb-search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
-.fb-sort{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);font-weight:600}
-.fb-sort select{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-pill);padding:11px 16px;font-size:14px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer}
-.fb-sort select:focus{outline:none;border-color:var(--o2)}
-.ofrow{display:flex;gap:7px;flex-wrap:wrap}
-.fb-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+/* Rechtstexte: Impressum, Datenschutz, AGB (eine CSS fuer alle drei) */
+.legal{padding-top:clamp(50px,7vw,80px)}
+.legal-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(30px,5vw,70px);align-items:start}
+.legal-txt{max-width:74ch}
+.legal-txt h2{font-size:clamp(20px,2.4vw,26px);font-weight:800;margin:36px 0 12px}
+.legal-txt h2:first-child{margin-top:0}
+.legal-txt p{color:var(--text2);font-size:16px;line-height:1.7;margin-bottom:14px}
+.legal-txt ul{margin:0 0 16px 22px;color:var(--text2);font-size:16px;line-height:1.7}
+.legal-txt li{margin-bottom:4px}
+.legal-txt a{color:var(--o2);text-decoration:none}
+.legal-txt a:hover{text-decoration:underline}
+.legal-txt .stand{font-size:13.5px;color:var(--muted);margin-top:30px}
 
-.res-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:44px 0 26px}
-.res-head h2{font-size:clamp(22px,3vw,30px);font-weight:800}
-.res-count{font-family:'Outfit',sans-serif;font-weight:600;font-size:14.5px;color:var(--muted)}
-.res-count strong{color:var(--o2)}
+/* Firmendaten im Impressum als Kacheln */
+.leg-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px}
+.leg-facts div{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-m);padding:16px 18px}
+.leg-facts div.wide{grid-column:1/-1}
+.leg-facts dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.leg-facts dd{font-family:'Outfit',sans-serif;font-weight:600;font-size:16px;line-height:1.4}
+.leg-facts dd a{color:inherit;text-decoration:none}
+.leg-facts dd a:hover{color:var(--o2)}
 
-.cta-strip{margin-top:clamp(60px,8vw,96px);background:var(--ink);color:#fff;border-radius:24px;padding:clamp(34px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;overflow:hidden}
-.cta-strip::after{content:'';position:absolute;right:-90px;bottom:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(239,108,36,.34),transparent 68%)}
-.cta-strip > *{position:relative;z-index:1}
-.cta-strip h3{font-size:clamp(22px,3.2vw,32px);font-weight:800;max-width:22ch}
-.cta-strip p{color:rgba(255,255,255,.62);margin-top:10px;max-width:46ch;font-size:15.5px}
+/* Seitenleiste: die drei Rechtstexte und der Kontakt */
+.legal-side{position:sticky;top:96px;display:flex;flex-direction:column;gap:14px}
+.leg-nav{background:var(--paper2);border:1px solid var(--line);border-radius:var(--r-m);padding:8px}
+.leg-nav a{display:block;padding:11px 14px;border-radius:10px;text-decoration:none;font-family:'Outfit',sans-serif;font-weight:600;font-size:15px;transition:background .2s,color .2s}
+.leg-nav a:hover{background:rgba(239,108,36,.08);color:var(--o2)}
+.leg-nav a.here{background:var(--grad);color:#fff}
+.leg-card{background:var(--ink);color:#fff;border-radius:var(--r-m);padding:22px 24px}
+.leg-card h3{font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--o1);margin-bottom:14px;font-weight:700}
+.leg-card p{font-size:14.5px;color:rgba(255,255,255,.72);line-height:1.6}
+.leg-card a{color:#fff;text-decoration:none;font-weight:600}
+.leg-card a:hover{color:var(--o1)}
+.leg-card .btn{margin-top:16px}
 
-@media(max-width:700px){
-  .filterbar{margin-top:-30px;padding:18px}
-  .fb-sort{width:100%}
-  .fb-sort select{flex:1}
+@media(max-width:980px){
+  .legal-grid{grid-template-columns:1fr}
+  .legal-side{position:static}
+}
+@media(max-width:600px){
+  .leg-facts{grid-template-columns:1fr}
 }
 
 </style>
@@ -227,7 +239,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     <a href="startseite.html" class="logo" aria-label="Areal 200 Startseite"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZMAAACMCAMAAACONbSpAAABgFBMVEWmUyTkmGrVWyzWak2UMhzipZbspFTj5ODy36liMzKZUjKplJSUYlVrWF7dkyjQcl10IxnHVTjw1pj6aCCPZmPSmXNxLydtagavXwHzxnL/tiagXEZ3Ogzzp0Sw5+7eaEW/vz+tt9l0TEjlpob1zGP4yUvKd2IG//+GNyvbkDN3Rjqxlnr/9FhulaSVUTp6+Ps+FhFqdJmyiWB7Rjhtp+4ICO+ZMyL/AP/FPSKReY4ArP8PdP/RuMkMJ1T/PypoaPZ4PkH60TA5i5QA/wBnH2M/apSZZuWDPUU8YWGAPTm0gDO8gT1VAP8AAADQOxbveQz2hQv8mAz8twv9pgzlRxbtaA/7/v7aQRj/AADtVxJ+fn6qVVXRRiX/f39/AAD/qlW/fz+qAADiPRWPJRV+Pj73py7//wC1NhnqVSr/VVVVAACnKRSqqlXviCr8yCyuSBf/fwDqdyXztSv3lyavVxfWUzLkSiW/Pz/+ww2/PwBUVVX//3/RZhKXdnGoeHDTdRUsRH8yAAAAgHRSTlPkWeCh7CqgFSBbqCFcKN9a4K1LAykzoQQDXAOaDNEMzQQRVEub0zABqLZlHQMQbgQKFFGcBwMFAfsfBAMWDwQGXO8LAREMCkYVfW3HAwD+/v7+/v7+/gX+Af4CA/oCAgMEA/78BPQB/vwDA/4D9fz+Avv1/P3w/gT9BAQC/jUy+pNHBRYAAB9dSURBVHja7Z2HWyLJtsCbjCQZQTC7o86dtJN27+7dm+PLrwiiRQsCigiKOuYwyqz/+j1Vnaq6q2lQZ9b9vq773u7O2I10/fqEOqFKQvcbN68bMG5uarXaDUbueIgh3e/2dp8/ueMXYYJReGxsLAwjBMOVk0fApIHCs9vGmB1rN9wZ/YWZTKFgqWiMUhAduTP6CzNJmZgk5twJ/XpMGqkbkTXB20V2nAbQjTulX4cJluEfNZGFP+WYlDzINShfh8kGQpPBMNq3mnhPiWcSJNeaL5py/bGHZlKTUSh4WpgNo0B/Ew9MXqIJ0zVHChd3PCATOYWQ57QAYxabjcURelnkRyJkun0cjT1bwkDPHQ/GBN7wcPAgnydQgljmoGBsMvHUyFdMSD4uXz0bQ0eu7X8gJngCYc9BIU8GgTIna6ahfTOVOkJhM5OSZ6qBWeUW/rgM4+MSQt+4c/0QTMCoj80qRFQoKIUVHgqysaKZSZCou6kbmf48rCJZBlEJoSPX1N+fCSw/gqd5YxQKRVioB6hnhcMeT3DWLCbF4vbkGJ36qRrRe6Fny9r4OOaa+vszqbUXTwt5jgmBQnkEE6dWHoqkbG8HJ8OEy7csEqK/Qm7c+L5MUuglh4Ta+dNgODgLC0XCx2aUSsvbickwsGOREP01hl1Lfz8mn1DEygSoFAvasGMCY/nk2SSPBKAkfnDn+35MqiidzwugsMOWCVCxDukHV3nd08bLv5XuwcSC5SoxglruhN+PySV66yQo/ZmUzGLiTvd9mVTQ7739mfQnwjO5SsRcMbn/mrGOIg/HZFn6z7o73fdmAlb+tg+TogVKyTRYJIm3rpg8SAzyD1I/JjAK+dve2dmh5IchSYdnvdsCoFCJcEyk38q/c6f7/kzqaNqWCfC49R76/ZkXkdirWDodz6ZjsUgkmfSf3RaBBi8mrjV5KCb7Mmvleb3VO/QnM39LmxMmKBR/FQGRKQIIFor0R1l2Z/v+TCBUT3InAib5Myk5kqbRxvrmTKtarWaz2Wq1NdNVuCxk/GeJEismr8A6ueP+TFIsEoYIiEgkRoDUWxXrSrPSImBwTJJuS4yYuFP9EEw2ULAgkBIg8ioKP56p2N7Zvu4SKhkpoYnJgismd2PSxnze1nNqRZI/8y+ADak7TbGchX+kIyoV6f/dtcmdmJAAYUpP3abQosCWeP3TAaGItCE7b7JGVRCWBel2+WoZIl2PT0wal3X5Un7scjJHnajUBqmu20WBA4sXnD/MfEaoZXkQvEH/Sm6YflLrIjwtJUqwNnlsD9/Wk6mPmEmtHZ7NJ4KL9EtujMuhA8vKpOd/RcNg5rFLnk1pdahZQgEoLkmxRycmsHz1+Hy+UfwYoUiMRc+v5vPHB0EPFZdZS0zY64+h+rXAdEBxi897vjPv82DKhxOhLorGHt1TYznsu1hZWdmZD6DKo2WC5dDx6moe/i9fOJgNLgYLZiSH/iiaEXrMHu8OPN/K2poXHtEMBV0/Qu1whHwr5XIZvvQ8bv/usTKBmQUgBImCIG8eh99joQbaRT5KhI41r8cKRX509n0XjV7kymSsXIxCnkgoSo2Nv8jsSKVSDXtFV9tITUwcwWVHMOTUxFSjZi+l4amjiSNtTExNfXsjZNLGiVVl5AUDrPv3SCjlVTRqIIHhXfwVrEQ+gZioTFZ8SOSm11I2Ln5D/LciF+ZIXDvVEPZNsYXukmZNFDERMwHFNS12UWoowCFZW5kPtR99cd2mzqS88gRZ5xMDEbxInACfb54O+p+eRbC08r6ogBdBfZUxZoNBD6ncEXTjkHJEPLYE12gjuLQ0GeIK3VUmWTy72ocJSElXWN8wAU/HjzWfjTJ4VEye9GMCWifg8+7srHFjddXrPQ56iJo3G1TsCSr1VUwWowR1bshSvA4TPxY8OVle5vJLJ1Dlg41CUUm9NHBsz6RwBrZE6J40ZF5MqPYKyfhXzWQXhXy88DNgvLNjPBTol4IC3oKofqQE/SFHpu6Q0NJJSTBoobu2kpBUPySYtyFSyBd6yTkbjzFlERPwLz0o9Sti4jUzCaDA/I4QCJGVtdVj7vkASfC0YFfRsz3JGYopNCYkUlIKRbVmEkkR1vCxvZTkwQmu2rQLWcWEuJePXVAMJjkLE1AZ82Z1zEIBKh5wErS1ZwpD7NyWSXGb7VyDvjYxkpJaKIrlms5kQxcTAZXC4YJdinBXICZUUDZ+BUyUYWZSk8N2ekuDQiSlxsbOC5bqEaNUgWnxvEFj26J6Bf0/rpYwlSqJxn5CujWxMCl4M3ZIIDCx07QyWZtH8qNn0rRhUsWi10yDo8zQ2nFAhQJv/gETM2dbEPROgzEVSqMdmjVwsJUlekYW+nQaKhPGEV4VaK6ndjGhDVh6NUWCEnjkbQ3gCzfFugsm+UJ7jHKuA0lspfpDkjqdsoKEoPEpfZttGR8oCGCeepIUUYcknfV0KrOhI1n56KAO5Na4Fi6+LTIdIWGFCVRre21N/KFtOkqW8fxKWfRK+fDR45cTAGKVk/o7r/YUOX/s81OsjVA0Ni2VFSIwTQHaBQ0vsyocBSkSYzZswNEYzLSuvaao5gprmqsgxaLM74RrE1qOnAoKYZJFcT/UQgjFpJfBWdsIhccQkzILxxtGtV+l7qqicc2aSNMW7RCa7qj6Kx8kZr6NcEKdJ4nGWbvdze7mZreuXKxCKc3SGTTEJDFNlp5wLYxuV02Ua4ISBnjqmjGaOYQAZN4qJ1LcNnAqk0DeSln1KVfUoN6g60Zc299vcKMmtEIY1+Bn+9VGDQ9opeCTHe6wZfJJd1rWYZJbNRCQttwm0S5cqUIANlZWVbwXw237upj0YmimyjBsV8AEa1C2wwAEo5AqJkUIiVxiLvvURTEtSw7Os8oEyL7yewUr+F4EZW2rJAMXTTETp3Vju/FJFkue6bpdPhG4eekkfhAK5N+by2q7L5Mmx0QGh4w+xMU0+tHyBLUfUURlckzeZ61goZCHq63h8JCkCsokLGjAUKlM/i80sW8tEJouaa5XVpMT+P1xERQQk6xtVYtPA1I2wOju8GW/sCyR7YBlYN4FqtDrMP3RuPJzZHrFzB9cZz553P4OauNFTNBz1Zych+pY1HQb9apMFmGWZa2TzftUoEz24eXXGm+n4H8eBcnpd4KVQgV9UATl6u8YtfWcVguFIocm3VVYzVg2hmCij+dNYibLqgeTY6l47RVNjcT3IAe2vkPHxYX6r4tz7yjjTpDNEvC478n5+rry4/V1r280IJAmJqcJoUD1k+FyeoePcNmVB5WT55Ly/afFjo2MJJUJLObbckh9i33CBdkRkrTdNY7onhuKNXl+I3RhI6pBwagmMYWoKGYSlcKZfQ3QJRrV1l0qDVZc7NeNuxCx816Aw5mzjJUdAwr8OxQk17E/BzU/D7lMWWTh5E2SzgUSTf6OC68vhExPYcukimI5auCjck0c5H+i+qeECXqqTNeBRxY97EQ7om6hBb9iCr1UmASFb/mG/J3KJIRu2LqVLvpgam6QQnY1QL+TsSom1KUsw9w1WVmZx3UbJIH5C8URLXNA4Mb15rq2GANyozsXOdNF8IfmBeAWiArctghhKu7z4JeQO1bOIe1+ORATSCNN+zsdKW3j2HySn+hyAi5JXGk7OAgI3UxQXgImHuFGJ1n0uqQ7XlzNXRoWj5wjPCLM9qrrxRWNCPz/Si6Zya1oU0FzW8L0D/jP500TDfa9Vh22FAk62V10ARnmS4vewj4iIeJPJpm2lDwIE+KC/vwa2wUiJpDBJNDWmYSECMEt07eaw22UUMIpHuGOGm305uRKZdLgmGxUgny+98+2UZI6WEPNiJCX0R9C/qb2giru8EQfI2TPBH6h/AmNnjf7XHVuzjA3+jGEr9RcH0WbeCAmXYSQnfuP21gLQo2jWgVFHZiMnyqZFFodozKZFDLB6KnKBFbyEm/CEhyTCLJTXbvy+HpOZUIlJYLQW9a4kABLTRBH7jfXGhNwiy76XZVrnvPmaheN95M+Klw+tCkPJCeVaq1tqxw8KhPwtPDgTOjPHZjMiZnAuuZ4QNVF8ovMHDT9H2T0RhEU1c6L1o1V/i4Bkwj8xksnJGSK2R31agRJ388FXgS3PAiTfjuZ4XlVTJ6Aeh1GTioDyMmyiAnJNnILxrSd1wU6aJ175hdoBrofc02GiXXdCJGLdc5gW5B0oCWCRDadkJSb54YYZqn0mTwGoaRsGExywzPBf0FBLVT7Ft6cGooq03UQfgAmc2ImKd7E5yXbiDAt/GDnMo6qFVh1MkwE7nCKu4uLkBFPbCW3lyFFe+McbuOOFVbtNeexlr/eNd56xQXUb2GFstyEL7R/DyZQ3RBcVaP13jcwy1+FCUltDWROIOFiFpM6edIXjCNKAyycYv4nwpyYdPb2tujYIwP+ncw8B/3AfXQz19mCdjy/P5nc2svlmpzp2dWqmVa0X6p8LnwSHXBHs8laoYC66tgEkR6WCVRC6FKyGiEOzMMysdFdExyTQj5iZ04uefVS7oyQ71hFC/4m87aaBaXGSkA5t5UZMY04vYiTQHJV/B25+1184YWfEbLmjjLDxG8wVBXIWnJkQZmhf6RH/FsmjNU7MsGfoHBCk5JViYjJIEy27y0ndfSSZXJr2xYqYy9nU/3P6XPVQ37tbSWqaM20btzlSCYFVcRdZYYZIi8+sz//7N9jBFGZ4SrjEYD6S47MKR6k8qix5JYOrJxbV33ooZmAzgOPS0NyHqMFt1+FSe2dl3O74jYmniRO2Hf5p1cKvBZ61dFyRQSKd5zLN7JMVvwf0Pt6ixvXWTrDzIu9tYDQ++us1pMH/xzZM16G8xBV6qy3sZf5AK/Gtaoyr+kdW03GCCnaeFh7cgl6y6tlflfXIsrSy5mJ5366q71PwudmJhWbxMkTVr8QR1h5rvofGOVVXtnxcVVFwMSYPrGbXeFm2B9Hde4bVOso1tF/NS31vWR0XbmTMXXHyHDHgqHxcuvjVFCGYwLh1MA8TTCuKUhCXfzlmeAGLY4JB7k2oLMf7OKvnGdUzmW0+Z1BIznWoni5dSPLZD0tDCSygU3IvVq5zUCQkFlxTLQZv6GZy+B6RXCH3+wYMLor58gERN3jNapWvJE51Rs1mIRs4l2e7eGZwDbOErXtJE0RTBzzQWG7Xt0J3vdcgdf5X1qnzX9vmQRlw4aJuO8DFmW6+gfH4UfrFTNzfv3jzyGuzXxm2S8U7BbKGF8W9B3m5MSRSYrEp/VKojUonNaWXc5MqD0pDWdPVCaQz6BA+HR8QRJ/24p5vZiBZ9S9hAwbmAV3mFnhODOpko9W7RE4DnVZdElMUj+eaCKIJ+j2pSPeH0xGjEZVrPzgTCD4u+g1irvWIO++2UZfmgmsNYLHx4KylUJEfJrJpclb3WNSkbBu7DSZsNcO293BMYmKmLBL+HKsVq1V2VGjf7wMSdoMk8Ai8hq67o14dsH1MAWeGSblvkw20DtDSKDnKRI13r9BmVh017eOfhdb3GVmkhLeHTrnxeRdalcfE/hFmRUUqFOVhUxei0IEbHjA/2e7iZrWaxhH4esYX2baZokLcSmJYbI5MBNYlAR8qwaSwxiXHHtYJk85JqO2TI6c14skjMQN30WZVV4eeddGTrDQoTNcpMXx3wjHuI+ZYEaP/mTnuoOCY0w6RoPqrl3GuMMoQ6aLcyHuqrucmUygcXENZEH8beuMtlDMpifgUca4x7PoOedSfWs+JA/OBDGfXV4nQ/knO+BvWCaedcZzlm03UTRQk12OB/K7NkjLA4MEqrJmTIHYweWkhp4P4QtX0OueDZM/ilsB180BV27O2MgssShGnaojExnNeXNDjOYTjontCw97w/2kf600XLaJpvU/23gytToKeNdWDCGJWTJdLJPKAzJ5LcmQ6RfrrtsfxOVqg0+aIiifBmWCzaFNp48HJsZHSn2YjDMLI5g/SJrl+t8GLrxnh0FCjLuM7sCEcBiCyRVlAkbjiQ2TuKitbHyYaSMWRa9THYDJn4ZikuOYRAZj8vMATKCOKQytWhqTlUPYhaklSCJ9MSZQH5MXMxFUb1SZpxlMUIx1Y9WJSWVYJhGWib2xhsljHT5HJhBMWdwxOhzK0nfCDP2X0l1hwsQnbvktxCw1WhUUHk67lNeNOtXqA+uuFVgksroLo0HkxJkJrBX0fkYQkjIEU2ZsUB9/odwvOMM2jpf1xDJwhMu5YQVFS6NUB7DxUt/0LRdlI3G2H9mP/JPduREb8ugQugvXsW9Nb9ugxr2KvjoTj7j5pPDSvGiEHpjhlItiUdQ0SnWA9QnDRM0/qjlIPR+p/g38XWauvoF+Zmfbdn1iIFDlZNqWiTxhdGoRIYnadKEPx8So7xqISQMtivuwCwdzpjfv0uoIDwBlR60xcWZSZ9YN6wsj/UfctEQv2zVYYHax78gEejTXdCSdaWy/3esXZIKN3niToFhqLuvYm7sDEzXl6sykpUfiyTreMdVEJvOdxCzRs7JNyabxJqm6y5ZJVTfvUAANK/c+2xY9LJMQnz8JSTa7rHjklMN6cSCLotb9ODOpoXRHv3Eew4as19VrMtRMpBaNJP+drahZ3DIT8xUJCihc5k1yYnKE9eY5W+OuV4r83qm+qziMnFwx9cJdlPH7D71eb2/VYlD4lhxGtVhtrj2UCy1z7sTkn+xrD1Hf1ABZ2RgT5cH1mrBPZt3CxM7Gg3HVm+dsjbsupv9xq+UZa8JkmHLMK6kXbh+pNdzL4hpuUMKKnJzoNdzpmZH/eZEhLa49TnlxL0DVsl7s7PlFY2vPBEXJJDkz4aKFJMfyGycmFZRmill8yJpnhH0t2W/twERGXqN5ro4dti98o/U6CBs7pmSNCVNXv7wkT4n5fdTyJzWuNjUaX5C47Yi4bSx2zWGVvWRGbH4zSZ4KvPIbPJOfojbbHDHKqwyp479gx3bRFzkWiqkLvALhdi61YGXyXBZts1Se7qu3FCZq/0lBvJvJhHr0bmkWEkwpo/9EFG2HNq4rrScIK0wq162ZOq0oj3FMEswHYNm0yt7LPLX7uvEMB6UM60aeiT8tXnVzU5wDKOiy1jc3C25Bh5lxH0b13Yq+LdomG6S0syeYFSptNzLJ1gXmhEqZp1ks6CGotNVjXmnv3ITG5CQkONO13VAPhLuanWN65+hDtLJprnTlIGx0kYAjzCsuKBJ5380a47pVbb3PdrvXrTp66jcLyi5hUnZicg2Jyhw/x8Tf+2QaTK8pLSoz6M97tBtoQjDgM6lbCxNI6m9ufrqs8Hv6rA+yrSh8jHrG6yLsxowsRx2rp4aXiBhtoO/UVuwlgUEJkzN4KZOg3vfLKnTTUj7FFNrxTNL2rnsWLXS4i0n53SBM4Au84Kbw3BfAdn6wlqDnftW60vRIXzGPz+InWpiUfSG9G9IwJ97nA1TiZVWtUsgnMPq2bdq6UD959/Q1uGDwsiVUQYHNPkyPZBxleUVahiRzGCLGuV6nYa2xzywmUCO82e98NJOgjKNqlfGRbJnU5bjfNIve+Sfm4QsYSrVq9gbX1Tu86wLP3cKEUPQ9GaXuOgR3zhUmT2qpxob9aNBZhb0eeqqgBDHZLzsAbfn7N41GYAN0WTihtmIn/kof9a+SKiiwAxia+iYcDgcCcHnjm29g49lnijW52iZxX6n/GVogKA1tvSjxYvK3fgeawOvOCwrkwXeh5d+RCbxQMb9wlcONc2NroEp9zj/4cuknKxP64aBda/C/kMJkbdS5GYV29kbobqaw3UpijH/38aQqJaWiUjbZQhHtHKWTSdO1Y8/08y9+m7WeIWBSXiAoSoMAOMI/cQ/n/0M/6YbXfYt/P4ljG2MVn2yrpTMd57mFdWjVKJbZGphJhzCpWxZaZfIFa6S1T5ETn2eUDo/dIOF3UrWuCUrhFDYAHhsL0zEGZyFrOw+VbuO0vBC+paTvEXWyNDlGBrl2cunZiYZkO4YETKBZ9VYkKBYL73DY4iZb6UYeehSYGB8hRe03wK6bZUw4fIavWuXqT/sP6TVMZotJ0DN+9CeDyQrsBrlDd4RUG07IWCUqhIRTjo8PZqmyy2qCQnYmKhRPtVHUN/AqFd6q0YUqepVgdu460QZzSsxy5K9Z0VkbEJvlGh5Olf2nSJ2BMVOdnL/SfwPrKorz7nAMuoo5Jra34y7+fs9xcr1Mc+4EWhhUUuAX18zenZZIlkkTXt897phdzmYxdNdU6p+lfKFgf55oqSiFKsrbh7NYKthucqccf6FkESVBtOKWX6Ngcmi8+dXK9LPwytvOvbsdwoSx8ZU+h2TDXL9ynONztmG6juLJfhg7OgLpM3ls05fT8pSMnFg2uVs1Dbq7B/H6zpQNssWbDxaYlw9DELuwbIvkiiCpis+kkT9I/N7C1B+uov/qMIIChTsOe55DPTf7LsINLWaR7v9H35LQrsMcm9ff8NlvMrYYO1sZia84yqLsljWRvNmPiRnKsZKBAL0prVLNJWJyy+mDa4Bya8ukJGn9PpKgGDGYt2ovGRHvVsPSeYGcD5l5lzRUHSwwIUzwPGmsN7sOUhbKbG31MSsd03GP8OQL5kCbHgJaMJZLGeWLVyySCILcMu1gvWbHhMyLIifEcEalM7HqKkjT/IazFdjTRkoIkZRupd9rTyQJlp8Hpt0HQXXewBzOJDv6U6adj0O4BiVv3HANc6FrmL1kxYkpSOGbEehItMGyl4xaPwCPZCAX2eGCpHtbyQWMus8z6i/WSu+JJLKfvpecq9MU2SBMaP/cXF3fwiImHfbM2ivfO4tYaisq5OwkOCuROzycbIwjsVFoyZIAChxY8igQN2vDLI0k6UPAY8YHOaEC2nGUx6Y31OnfpDPQMZqEbirnZTI5kisO4UzoFbWOTNT6CcRl+czdkIQgKUlHdmFVpvzitP4udNEcuZa2o5L21qfkA+FASthuRRuH9kOKGEoJ/o3TZA9IZsB+j7HPgiNvYE8bFH0bkZhBrp1Os5tXSOYyx/CBILlFTQq8WhnaTzsyN+ihIcYNdW3vo+uZmTdooL5OWVFvcWPAyZzKv6PiT7imv+WNfn2UPezjzczMZ8SIJ0EYqqgfaERTo59h/Gwen7Wh/on7AsrBFXNR/aLPr6P0WL6qWAGQCLxycZqM6Ds9tiNiAjslJASbPudPaSaGMH4/E0cIDXhiGdww96/3cWzckO3qe5oMMip1m9/UtVndVFrvOVjd9xV2H5Uu9y5dM9+jK+s7Zg341XjXf8Z8Y7dl995WWuYocn2mansWIJ7AQeGxDoXTRSIpFeUh3g/6vVFdvYGZp3r2erjdh+WKdeDBbuB/0fW14Gg2y5WV6iCjItyH0miVcdIjzLXWh5GQbYM8d5iWAgXJ9fpwp/oNfYM7OCY15UgtWyhH2J2vr8xkn/Tli6FQ9eVB8h13Df72G3ei78YE0qh9kAAUSBLc5XCAR74p9yM/7/fPkhiJCqUIUFJD6y9oFRtbwjfuVN+JCeTNDvsJSqFIUmTDHQ+ApxBe+vh3cRefO5zlBAJqZ33kRNVfU7WhhCQMec2rj/io5k72nc4q/5Gc8NAXChWV1IDz+61MhORKP7DAHXdgItdxpMcv4c3Hx4OoQKHHlLN9wITImJr8J7XJLpQ7MaFtOasGh96hZM3YFCmVo0Zfa39D3N+xZx/1HNoz18zfkQnZzV5PafWkTCwOGRtLFg2O7grT4zsrwmShfDNFT4ZkiFBBmXKn+05MSCJdUo+T9ZOt6KJSz5rbJAeqKQUxqW9uMBdrupmiUx9e4ojQSti2Gwe4GxOydATnqwdESC18Cz2N9CxVANpBnSFllo+m4Ejh1NHEhKyeMTz57ORq2TSullxBuSsTso/P4aH/b++UmP41wtNnluPu1EKZ7dngZJh9+5+HwpNLiRP9JDVOUEKya1LuyISU5kxH9SwLhJ1jUs9SBqCVlJW2txPKycNLS8HZxMk2zWYuC4brD9+DCU3sGPkevAkmppc3UWEPGOxXs8SbeXc1f1cmKDtT4euCQH+JD0+1QyOE8gy74f47MxGUHwQL/aGUis6SciVusHTHXZi0ceig8ACC8hEjV1AeiMm+Us4yDBMCpWiWk1IM7btz/jBMlENUHZAUeSKkkEzimSSkNHKz8w/EJKWcDtkXCmNQAAiUykZioe9vXSRfiIl2sG1fOWGEhJ77TAvephkoUiQ0aK2ey8Rx3KjVkSwTKMDsiVcpxTMpEqdlgPtQ6ylppkSaRk61+O4YnElKPWyYQdKLxaZpjWzvtmCCckpP0aArHNzVoCSgSLnr+lwPx2RCO2xYH7cRpBx9Hpuelgo8k8RTlK0YNcsLErS73EY+DF6R6jIZYEDbOB8aJgecplvqJM8lTEy4W2cASuLMaT8ZdwzLpItenHHxrjN1z2tcbc1MPH1Z4qAk+B1F4MwSaDGwPV7bHXddx7/53s80I/XYU502tD0sNCYvBXkSV289OBNiOl4l/b28qrn01gCyxv/hu1NOd1lOfq7OuP7Wl2BCWkkWkiSPUihIcVYTwTZWB6W+TNzxheQEky0CYhH/Ye/MtGcP2cKNFZT/vVNVsTuGZ4KUFV96JPnKZB3gqE1u4fidy+TrMaEHv4m2jPiOEZPl0lvX7f2aTGj7XNa6v2SiSLUX2JrE7VkauaXBX5UJEqbvI6T9mGzP+SITiSHZndZfnIkMMZZXMWgqDrkBrcfChBWZzRnXmDwOJm2yR7ZDi7Q7Bh3/Bv4vPlk2mBiQAAAAAElFTkSuQmCC" alt="Areal 200"></a>
     <div class="nav-links">
       <a href="startseite.html" class="">Startseite</a>
-      <a href="objektliste.html" class="here">Freie Objekte</a>
+      <a href="objektliste.html" class="">Freie Objekte</a>
       <a href="lageplan.html" class="">Lageplan</a>
       <a href="startseite.html#ueber">&Uuml;ber uns</a>
       <a href="startseite.html#leistungen">Leistungen</a>
@@ -244,438 +256,51 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 <!-- SEITENKOPF -->
 <section class="phead">
   <div class="wrap">
-    <div class="crumb"><a href="startseite.html">Startseite</a> <span>&rsaquo;</span> <span>Freie Objekte</span></div>
-    <span class="eyebrow">Objekt&uuml;bersicht</span>
-    <h1>Freie Objekte in Sollenau</h1>
-    <p>Hallen, Lager, B&uuml;ros, Stellpl&auml;tze und Wohnungen. Filtern Sie nach Art und Kategorie und fragen Sie direkt an.</p>
+    <div class="crumb"><a href="startseite.html">Startseite</a> <span>&rsaquo;</span> <span>Impressum</span></div>
+    <span class="eyebrow">Rechtliches</span>
+    <h1>Impressum</h1>
+    <p>Offenlegung gemäß § 5 ECG, § 14 UGB, § 24 MedienG</p>
   </div>
 </section>
 
-<!-- FILTER -->
-<section>
-  <div class="wrap">
-    <div class="filterbar">
-      <div class="fb-row">
-        <div class="fb-search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="search" placeholder="Objekt, Kategorie oder Gr&ouml;&szlig;e suchen" aria-label="Objekte durchsuchen">
-        </div>
-        <div class="ofrow">
-          <button class="chip active">Alle</button>
-          <button class="chip">Miete</button>
-          <button class="chip">Kauf</button>
-        </div>
-        <div class="fb-sort">
-          <label for="sort">Sortierung</label>
-          <select id="sort">
-            <option>Neueste zuerst</option>
-            <option>Preis aufsteigend</option>
-            <option>Preis absteigend</option>
-            <option>Fl&auml;che aufsteigend</option>
-            <option>Fl&auml;che absteigend</option>
-          </select>
-        </div>
-      </div>
-      <div class="fb-row">
-        <span class="fb-label">Kategorie</span>
-        <div class="ofrow">
-          <button class="chip2 active">Alle Kategorien</button>
-          <button class="chip2">Hallen</button>
-          <button class="chip2">Lager</button>
-          <button class="chip2">B&uuml;ros</button>
-          <button class="chip2">Stellpl&auml;tze</button>
-          <button class="chip2">Gastro</button>
-          <button class="chip2">Wohnen</button>
-        </div>
-      </div>
-    </div>
+<!-- INHALT: Text 1:1 von der bisherigen areal200.at (Stand 09.06.2026) -->
+<section class="sec legal">
+  <div class="wrap legal-grid">
+    <article class="legal-txt">
+      <dl class="leg-facts">
+        <div class="wide"><dt>Medieninhaber und Betreiber</dt><dd>Fa. SBV Immobilienvermietungs GmbH</dd></div>
+        <div><dt>Anschrift</dt><dd>Blumauerstraße 200A<br>A-2601 Sollenau</dd></div>
+        <div><dt>Kontakt</dt><dd><a href="tel:+43262848365">Büro: +43 2628 483 65</a><br><a href="mailto:office@sollenau-immo.at">office@sollenau-immo.at</a></dd></div>
+        <div><dt>UID-Nummer</dt><dd>ATU39351606</dd></div>
+        <div><dt>Firmenbuchnummer</dt><dd>74074h</dd></div>
+        <div><dt>Gerichtsstand</dt><dd>Wr. Neustadt</dd></div>
+        <div><dt>Verantwortlich für den Inhalt</dt><dd>Harald Skaropitsch</dd></div>
+      </dl>
 
-    <div class="res-head">
-      <h2>Alle Objekte</h2>
-      <div class="res-count"><strong>23</strong> Objekte gefunden</div>
-    </div>
+      <h2>Haftungsausschluss</h2>
+      <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Dennoch übernehmen wir keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte. Als Diensteanbieter sind wir gemäß den allgemeinen Gesetzen für eigene Inhalte auf diesen Seiten verantwortlich.</p>
+      <p>Unsere Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Daher können wir für diese fremden Inhalte keine Haftung übernehmen. Zum Zeitpunkt der Verlinkung wurden die externen Seiten auf mögliche Rechtsverstöße überprüft, es waren keine rechtswidrigen Inhalte erkennbar. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
+      <p>Wir bemühen uns, die Urheberrechte anderer stets zu respektieren und greifen bevorzugt auf selbst erstellte oder lizenzfreie Werke zurück.</p>
 
-    <div class="obj-grid">
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/2aeb7c11709f920e56262fe77bdad823/fc_h1080_mwebp_w1920/1iTIWqwQ9fk1GtmMXCow5f.jpg" alt="Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / WERKSTATT</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Große Halle mit Lichtkuppel &amp; 2 Hebebühnen – Mitbenutzer gesucht!</h3>
-          <div class="obj-foot">
-            <span class="obj-size">112&nbsp;m&sup2;</span>
-            <span class="obj-price">295&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/7f59a9538d566112a3f8a70d75341798/fc_h1080_mwebp_w1920/6RKlwlpCuNjfYL8XMjjyfO.jpeg" alt="Sonnige Halle, Lager, Werkstatt im Areal200 – SR3" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / LAGER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Sonnige Halle, Lager, Werkstatt im Areal200 – SR3</h3>
-          <div class="obj-foot">
-            <span class="obj-size">90&nbsp;m&sup2;</span>
-            <span class="obj-price">950&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/3151e9bfc4836418fe51f881c2303913/fc_h1080_mwebp_w1920/IGKQCARGhplAIvEj0wZm2.jpg" alt="Kompakte Gewerbehalle N19 – Ideal für Ihr Business!" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">GEWERBEHALLE</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Kompakte Gewerbehalle N19 – Ideal für Ihr Business!</h3>
-          <div class="obj-foot">
-            <span class="obj-size">48&nbsp;m&sup2;</span>
-            <span class="obj-price">620&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/57a629ab080afd3ad386262319b91d58/fc_h1080_mwebp_w1920/258dUH1bkMHeElAr68loXF.jpg" alt="Altbau mit traditionellem Charakter, 3 Separate Wohnungen" loading="lazy">
-          <span class="obj-type kauf">Kauf</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">WOHNHAUS</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2604 Theresienfeld</div>
-          <h3>Altbau mit traditionellem Charakter, 3 Separate Wohnungen</h3>
-          <div class="obj-foot">
-            <span class="obj-size">328&nbsp;m&sup2;</span>
-            <span class="obj-price">480.000&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/a6ca751af180d3b89be83c5e2056ffed/fc_h1080_mwebp_w1920/3imDTTtWIeVfw9DWP4yXWT.jpg" alt="Schönes, großes, helles Büro" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">BÜRO</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Schönes, großes, helles Büro</h3>
-          <div class="obj-foot">
-            <span class="obj-size">93&nbsp;m&sup2;</span>
-            <span class="obj-price">909&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/61a9a89c71f8f62e92485c9949289436/fc_h1080_mwebp_w1920/12UbQu8pptv0p8KtnVpJRd.jpg" alt="Selfstorage / Kleinlager ab 5m² – ideal für Motorrad-Überwinterung" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">SELFSTORAGE</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Selfstorage / Kleinlager ab 5m² – ideal für Motorrad-Überwinterung</h3>
-          <div class="obj-foot">
-            <span class="obj-size">5&nbsp;m&sup2;</span>
-            <span class="obj-price">48&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/f2225e7cb0f27eefe4648d700f8c6942/fc_h1080_mwebp_w1920/4Eswm1ZoT8ZJs7xMmpPk2n.jpeg" alt="KFZ Werkstatt GmbH vollständig ausgestattet, sofort betriebsbereit" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">KFZ WERKSTATT</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>KFZ Werkstatt GmbH vollständig ausgestattet, sofort betriebsbereit</h3>
-          <div class="obj-foot">
-            <span class="obj-size">250&nbsp;m&sup2;</span>
-            <span class="obj-price">3.550&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/5965cbd4cc50a69db96ad76653da56d7/fc_h1080_mwebp_w1920/4N3kPXI68Q9TwyhzlNsGox.jpg" alt="LKW Stellplatz zu vermieten" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">STELLPLATZ</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>LKW Stellplatz zu vermieten</h3>
-          <div class="obj-foot">
-            <span class="obj-size">87,5&nbsp;m&sup2;</span>
-            <span class="obj-price">252&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/8cc173acd720d0c297aa465a81922978/fc_h1080_mwebp_w1920/41o2jVLTs4kgIO3bH0PXAN.jpg" alt="Modernes Wohnjuwel in Sollenau" loading="lazy">
-          <span class="obj-type kauf">Kauf</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">WOHNUNG / HAUS</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Modernes Wohnjuwel in Sollenau</h3>
-          <div class="obj-foot">
-            <span class="obj-size">140&nbsp;m&sup2;</span>
-            <span class="obj-price">478.000&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/8899ed0c581d94d95a307b24a86b7626/fc_h1080_mwebp_w1920/3RT6GJOUpqIrUIXCnMOJEE.jpeg" alt="Große Gewerbehalle mit Verkaufsraumcharakter" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">GEWERBEHALLE</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Große Gewerbehalle mit Verkaufsraumcharakter</h3>
-          <div class="obj-foot">
-            <span class="obj-size">388&nbsp;m&sup2;</span>
-            <span class="obj-price">3.119&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/1d2f3f951fa52f6cfa992844c21af1ee/fc_h1080_mwebp_w1920/59pB9b8YHlKS18GlqZRj22.jpeg" alt="Große Halle, Werkstatt, Lager 40m² mit Hebebühne – N3" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / WERKSTATT</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Große Halle, Werkstatt, Lager 40m² mit Hebebühne – N3</h3>
-          <div class="obj-foot">
-            <span class="obj-size">40&nbsp;m&sup2;</span>
-            <span class="obj-price">443&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/6fd151d8253ed9812f46f5e4070b31cd/fc_h1080_mwebp_w1920/5PQpCfFYjLzX7DkmZsCAt3.jpeg" alt="Dachterrassenwohnung mit Ausblick auf Wiener Neustadt" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">WOHNUNG</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2700 Wiener Neustadt</div>
-          <h3>Dachterrassenwohnung mit Ausblick auf Wiener Neustadt</h3>
-          <div class="obj-foot">
-            <span class="obj-size">103&nbsp;m&sup2;</span>
-            <span class="obj-price">1.203,40&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/bd67fef6dbf46fc4083c9ddd317ec8a7/fc_h1080_mwebp_w1920/6RQLbNQNJ15gtyhGOhl0E9.jpeg" alt="Große Halle, Werkstatt inkl. Hebebühne 92 m² – GSR7" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / WERKSTATT</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Große Halle, Werkstatt inkl. Hebebühne 92 m² – GSR7</h3>
-          <div class="obj-foot">
-            <span class="obj-size">92&nbsp;m&sup2;</span>
-            <span class="obj-price">1.071&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/966691a209d89ee3f80509c0fd2f66d2/fc_h1080_mwebp_w1920/VMdNoF6vtCwDe9xlfeqFA.jpg" alt="Büro, Musik-Proberaum, Hobby, Fotostudio – 35 m²" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">BÜRO / ATELIER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Büro, Musik-Proberaum, Hobby, Fotostudio – 35 m²</h3>
-          <div class="obj-foot">
-            <span class="obj-size">35&nbsp;m&sup2;</span>
-            <span class="obj-price">315&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/f86f73fc90b7a23b59bdf8f2af42c295/fc_h1080_mwebp_w1920/2VsgzwzQybfJ2IguCwrSfB.jpg" alt="Lager- und Stellplatz ca. 800m² auf Industrieareal" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">STELLPLATZ / LAGER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Lager- und Stellplatz ca. 800m² auf Industrieareal</h3>
-          <div class="obj-foot">
-            <span class="obj-size">798&nbsp;m&sup2;</span>
-            <span class="obj-price">1.365&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/75882450fc5c64dd593af4c77e6f2571/fc_h1080_mwebp_w1920/4MwoLtsTcGbZSqI0GUZVLr.jpeg" alt="Große Halle 112m², Werkstatt, Lichtkuppel, Sektionaltor – P1A" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / WERKSTATT</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Große Halle 112m², Werkstatt, Lichtkuppel, Sektionaltor – P1A</h3>
-          <div class="obj-foot">
-            <span class="obj-size">112&nbsp;m&sup2;</span>
-            <span class="obj-price">913,50&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/a8ca0036b03de290047eb95f913f35fd/fc_h1080_mwebp_w1920/2ZXygJ2PSlKqUz8EEj5FnM.jpg" alt="Container ca. 5,8 m² zu vermieten" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">CONTAINER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Container ca. 5,8 m² zu vermieten</h3>
-          <div class="obj-foot">
-            <span class="obj-size">5,8&nbsp;m&sup2;</span>
-            <span class="obj-price">105,60&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/1e143f5511ce5902115c1f69809b0d78/fc_h1080_mwebp_w1920/g8blYhE1DEFMAWi0b1fqY.jpg" alt="Kalthalle, Kaltlager, Stellplatz ca. 46 m² – XH12" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">KALTHALLE / LAGER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Kalthalle, Kaltlager, Stellplatz ca. 46 m² – XH12</h3>
-          <div class="obj-foot">
-            <span class="obj-size">50&nbsp;m&sup2;</span>
-            <span class="obj-price">389&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/b48002190e712d4ac94637a76539fe56/fc_h1080_mwebp_w1920/1BHXF91X8NGwJffAskSsF2.jpeg" alt="Kleinlager / Selfstorage ab 5m², ab €48 Netto" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">SELFSTORAGE</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Kleinlager / Selfstorage ab 5m², ab €48 Netto</h3>
-          <div class="obj-foot">
-            <span class="obj-size">5&nbsp;m&sup2;</span>
-            <span class="obj-price">57,60&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/110a8924ac2aad0c9842fb2e857f1061/fc_h1080_mwebp_w1920/1qn9tLsJFC3O5Rmf4SsdcN.jpg" alt="Halle, Lager, Werkstatt, Ausstellungsraum ca. 90 m² – D1" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">HALLE / LAGER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Halle, Lager, Werkstatt, Ausstellungsraum ca. 90 m² – D1</h3>
-          <div class="obj-foot">
-            <span class="obj-size">90&nbsp;m&sup2;</span>
-            <span class="obj-price">840&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/2223d855acd4d75f6cf3df68718b87e0/fc_h1080_mwebp_w1920/59LR2X0yWPObUJJxPo90Ov.jpg" alt="BISTRO AREAL 200 in 2601 Sollenau" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">GASTRO / BISTRO</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>BISTRO AREAL 200 in 2601 Sollenau</h3>
-          <div class="obj-foot">
-            <span class="obj-size">90&nbsp;m&sup2;</span>
-            <span class="obj-price">1.284&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/e5cd93c273cd1496b9376b43557e11f8/fc_h1080_mwebp_w1920/560Yqvosa5nDvvvpVVN005.jpeg" alt="Schöne sonnige Wohnung in Wiener Neustadt" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">WOHNUNG</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2700 Wiener Neustadt</div>
-          <h3>Schöne sonnige Wohnung in Wiener Neustadt</h3>
-          <div class="obj-foot">
-            <span class="obj-size">44&nbsp;m&sup2;</span>
-            <span class="obj-price">715&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-      <a href="objektdetail.html" class="obj-card">
-        <div class="obj-img">
-          <img src="https://storage.justimmo.at/thumb/ae858509a9fcbda485b798dc5258a3fc/fc_h1080_mwebp_w1920/7dBCfTe22A3qywLbDHDdU5.jpg" alt="Büro, Musik-Proberaum, Hobby, Fotostudio – flexible Nutzung" loading="lazy">
-          <span class="obj-type">Miete</span>
-          <span class="obj-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>6</span>
-          <span class="obj-tag">BÜRO / ATELIER</span>
-        </div>
-        <div class="obj-b">
-          <div class="obj-loc">2601 Sollenau</div>
-          <h3>Büro, Musik-Proberaum, Hobby, Fotostudio – flexible Nutzung</h3>
-          <div class="obj-foot">
-            <span class="obj-size">Fl&auml;che auf Anfrage</span>
-            <span class="obj-price">315&nbsp;&euro;</span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="cta-strip">
-      <div>
-        <h3>Nicht das Passende dabei?</h3>
-        <p>Sagen Sie uns, was Sie suchen. Wir melden uns mit passenden Fl&auml;chen, oft noch bevor sie online gehen.</p>
+      <h2>Angaben zu Objekten</h2>
+      <p>Alle Angaben zu freien Objekten, Flächen und Mietpreisen sind unverbindlich und können sich jederzeit ändern. Maßgeblich ist ausschließlich der jeweilige schriftliche Mietvertrag.</p>
+    </article>
+    <aside class="legal-side">
+      <nav class="leg-nav" aria-label="Rechtstexte">
+        <a href="impressum.html" class="here">Impressum</a>
+        <a href="datenschutz.html" class="">Datenschutz</a>
+        <a href="agb.html" class="">AGB</a>
+      </nav>
+      <div class="leg-card">
+        <h3>Fragen dazu?</h3>
+        <p>SBV Immobilienvermietungs GmbH<br>Blumauerstraße 200A<br>2601 Sollenau</p>
+        <p style="margin-top:12px"><a href="tel:+43262848365">+43 2628 483 65</a><br><a href="mailto:office@sollenau-immo.at">office@sollenau-immo.at</a></p>
+        <a href="kontakt.html" class="btn btn-pri btn-sm">Kontakt aufnehmen</a>
       </div>
-      <a href="kontakt.html" class="btn btn-pri">Suchauftrag stellen <span class="ar">&#8599;</span></a>
-    </div>
+    </aside>
+
   </div>
 </section>
-<div style="height:clamp(60px,8vw,96px)"></div>
 
 <footer>
   <div class="wrap">

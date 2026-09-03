@@ -191,7 +191,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 /* Startseite */
 .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,22,.72) 0%,rgba(16,18,22,.34) 34%,rgba(16,18,22,.6) 68%,rgba(16,18,22,.96) 100%)}
 /* zusaetzlicher Verlauf von links: haelt die Textspalte lesbar, ohne das Foto rechts zuzudecken */
 .hero-bg::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(16,18,22,.62) 0%,rgba(16,18,22,.34) 44%,rgba(16,18,22,0) 74%)}
@@ -204,7 +204,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 .hero h1{font-size:clamp(40px,6.6vw,82px);font-weight:800;max-width:15ch;margin-bottom:22px}
 .hero .lead{font-size:clamp(17px,2.4vw,21px);color:rgba(255,255,255,.82);max-width:48ch;margin-bottom:34px}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.hstrip{position:relative;z-index:2;margin-top:54px;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.14)}
+.hstrip{position:relative;z-index:2;margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.14)}
 .hstrip .s{padding:24px 14px 30px;border-right:1px solid rgba(255,255,255,.10)}
 .hstrip .s:last-child{border-right:none}
 .hstrip .n{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,40px);color:#fff;line-height:1}
@@ -262,15 +262,19 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 .c-info{display:flex;flex-direction:column;gap:12px}
 
 @media(max-width:980px){
+  /* schmale Bildschirme zeigen nur einen Ausschnitt des Fotos (object-fit: cover);
+     das rot-orange Gebaeude liegt im rechten Drittel, also den Ausschnitt nach rechts schieben */
+  .hero-bg img{object-position:80% 50%}
+  /* 4 Kennzahlen nebeneinander lassen ab Tablet die Beschriftung umbrechen: 2x2 */
+  .hstrip{grid-template-columns:repeat(2,1fr)}
+  .hstrip .s:nth-child(2),.hstrip .s:nth-child(4){border-right:none}
   .about-grid{grid-template-columns:1fr;gap:40px}
   .about-media img{aspect-ratio:16/12}
   .svc-grid{grid-template-columns:1fr;gap:18px}
   .c-grid{grid-template-columns:1fr}
 }
 @media(max-width:720px){
-  .hstrip{grid-template-columns:repeat(2,1fr)}
-  .hstrip .s:nth-child(2){border-right:none}
-  .hstrip .s:nth-child(5){grid-column:1/-1;border-right:none}
+  .hero-bg img{object-position:100% 50%}
   .about-badge{left:14px;right:14px;bottom:14px}
 }
 
@@ -299,7 +303,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-bg">
-    <img src="https://storage.justimmo.at/thumb/b111ba690ea7aecbfcee722f239a55f9/fc_h1080_mwebp_w1920/54Sj11iVSGkybqn2yeUmQT.jpeg" alt="Gewerbepark Areal 200 in Sollenau, Aussenansicht">
+    <img src="img/hero.webp" alt="Gewerbepark Areal 200 in Sollenau, Aussenansicht" fetchpriority="high">
     <div class="mesh"></div>
   </div>
   <div class="hero-in">
@@ -311,11 +315,10 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
       <a href="tel:+4367686219663" class="btn btn-gh">Jetzt anrufen</a>
     </div>
     <div class="hstrip">
-      <div class="s"><div class="n">96.000<em> m&sup2;</em></div><div class="l">Gewerbefl&auml;che</div></div>
+      <div class="s"><div class="n">83.000<em> m&sup2;</em></div><div class="l">Gewerbefl&auml;che</div></div>
       <div class="s"><div class="n">35</div><div class="l">B&uuml;ros &middot; 20 bis 60 m&sup2;</div></div>
       <div class="s"><div class="n">20</div><div class="l">Kalthallen &middot; 20 bis 50 m&sup2;</div></div>
       <div class="s"><div class="n">40</div><div class="l">Betriebshallen &middot; 40 bis 200 m&sup2;</div></div>
-      <div class="s"><div class="n">23</div><div class="l">freie Immobilien</div></div>
     </div>
   </div>
 </header>
@@ -426,7 +429,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
         </div>
       </a>
     </div>
-    <div class="obj-more-wrap"><a href="objektliste.html" class="btn btn-dk">Alle 23 Objekte ansehen <span class="ar">&#8594;</span></a></div>
+    <div class="obj-more-wrap"><a href="objektliste.html" class="btn btn-dk">Alle freien Objekte ansehen <span class="ar">&#8594;</span></a></div>
   </div>
 </section>
 
@@ -446,7 +449,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     </div>
     <div class="about-media">
       <img src="https://storage.justimmo.at/thumb/f2225e7cb0f27eefe4648d700f8c6942/fc_h1080_mwebp_w1920/4Eswm1ZoT8ZJs7xMmpPk2n.jpeg" alt="Hallenfassade im Areal 200" loading="lazy">
-      <div class="about-badge"><div class="bn">Seit <em>2024</em></div><div class="bl">Ihr Partner in Sollenau</div></div>
+      <div class="about-badge"><div class="bn">Seit <em>2013</em></div><div class="bl">Ihr Partner in Sollenau</div></div>
     </div>
   </div>
 </section>
@@ -537,6 +540,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
         <h4>Navigation</h4>
         <a href="startseite.html">Startseite</a>
         <a href="objektliste.html">Freie Objekte</a>
+        <a href="lageplan.html">Lageplan</a>
         <a href="startseite.html#ueber">&Uuml;ber uns</a>
         <a href="startseite.html#leistungen">Leistungen</a>
         <a href="kontakt.html">Kontakt</a>
@@ -550,9 +554,9 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
       </div>
       <div class="f-col">
         <h4>Rechtliches</h4>
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
       </div>
     </div>
     <div class="f-bot">
