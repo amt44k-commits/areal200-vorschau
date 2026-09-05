@@ -198,6 +198,12 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 }
 @media(max-width:560px){.f-top{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* Formulare zur Belegungs-App (Anfrage, Vormerkung, Suchauftrag) */
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0}
+.k-msg{border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:14px;line-height:1.45}
+.k-msg.ok{background:#e9f7ef;color:#1e6b3a;border:1px solid #bfe6cd}
+.k-msg.fehler{background:#fdecea;color:#9b2c1f;border:1px solid #f5c2bb}
+.k-boxhinweis{background:#fff4ec;border:1px solid #f7cdb5;border-radius:10px;padding:10px 14px;margin:0 0 16px;font-size:14px}
 
 </style>
 <style>
@@ -340,6 +346,13 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   /* Seite hinter dem offenen Sheet einfrieren (top wird per JS auf die Scrollposition gesetzt) */
   body.lp-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 }
+.lp-vormerk{display:grid;gap:9px;margin:14px 0 6px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.lp-vormerk b{font-size:15px}
+.lp-vormerk span{font-size:13px;color:var(--muted);line-height:1.45}
+.lp-vormerk input[type=email]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font:inherit}
+.lp-check{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--text2)}
+.lp-check input{margin-top:2px;accent-color:var(--o2)}
+.lp-vormerk .k-msg{margin:0}
 
 </style>
 </head>
@@ -371,7 +384,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     <span class="eyebrow">Interaktiver Lageplan</span>
     <h1>Freie Fl&auml;chen auf dem Plan</h1>
     <p>Orange leuchtende Hallen und Boxen sind frei zur Miete. Klicken Sie darauf und Sie sehen sofort Fl&auml;che, Miete und Fotos.</p>
-    <p class="lp-stand">Datenstand 04.09.2026, 23:37 Uhr</p>
+    <p class="lp-stand">Datenstand 05.09.2026, 20:50 Uhr</p>
   </div>
 </section>
 
@@ -447,6 +460,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   var tip = $('lp-tip'), panel = $('lp-panel'), pb = $('lp-pb');
   var NS = 'http://www.w3.org/2000/svg';
   var mobile = function () { return window.matchMedia('(max-width:900px)').matches; };
+  var API = 'https://areal200-belegung.fly.dev';
   var hx = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;'; }); };
 
   canvas.style.width = W + 'px';
@@ -566,7 +580,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   }
   function detailFrei(e) {
     return '<div class="lp-leer lp-frei"><b>Frei zur Miete</b>F&uuml;r diese Einheit gibt es noch kein Inserat. Fragen Sie direkt bei uns an, wir nennen Ihnen Fl&auml;che und Miete.</div>' +
-      '<div class="lp-actions"><a href="kontakt.html" class="btn btn-pri">' + hx(e.name) + ' anfragen</a></div>';
+      '<div class="lp-actions"><a href="kontakt.html?box=' + encodeURIComponent(e.id) + '" class="btn btn-pri">' + hx(e.name) + ' anfragen</a></div>';
   }
   // Fotos als Wischgalerie (Scroll-Snap): am Handy wischen, am Desktop Pfeile
   function galerie(o) {
@@ -599,7 +613,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     g.querySelector('.next').onclick = function () { track.scrollBy({ left: track.clientWidth, behavior: 'smooth' }); };
     upd();
   }
-  function detail(o) {
+  function detail(o, e) {
     return galerie(o) +
       '<h3>' + o.title + '</h3>' +
       '<div class="lp-facts">' +
@@ -607,10 +621,35 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
       '<div class="lp-fact"><small>' + (o.type === 'kauf' ? 'Kaufpreis' : 'Miete pro Monat') + '</small><b>' + o.price + '</b></div>' +
       '<div class="lp-fact wide"><small>Provision</small><b>' + (o.provision ? 'provisionspflichtig' : 'provisionsfrei') + '</b></div>' +
       '</div>' +
-      '<div class="lp-actions"><a href="' + o.url + '" class="btn btn-pri">Objekt ansehen <span class="ar">&#8599;</span></a><a href="kontakt.html" class="btn btn-out">Anfragen</a></div>';
+      '<div class="lp-actions"><a href="' + o.url + '" class="btn btn-pri">Objekt ansehen <span class="ar">&#8599;</span></a><a href="kontakt.html' + (e && e.unit ? '?box=' + encodeURIComponent(e.id) : '') + '" class="btn btn-out">Anfragen</a></div>';
   }
   function suchauftrag() {
-    return '<a href="kontakt.html" class="btn btn-out btn-wide">Suchauftrag stellen</a>';
+    return '<a href="kontakt.html#suchauftrag" class="btn btn-out btn-wide">Suchauftrag stellen</a>';
+  }
+  // Belegte Einheit: einmalige Benachrichtigung, sobald sie wieder frei wird (Double-Opt-in in der App)
+  function vormerkForm(e) {
+    return '<form class="lp-vormerk" data-box="' + hx(e.id) + '" novalidate><b>Benachrichtigen, wenn frei</b>' +
+      '<span>Wir schreiben Ihnen einmalig, sobald diese Einheit wieder verf&uuml;gbar wird. Sie best&auml;tigen die Vormerkung per Klick in der Mail.</span>' +
+      '<input type="email" name="email" placeholder="Ihre E-Mail" required>' +
+      '<label class="lp-check"><input type="checkbox" name="datenschutz_ok" required> Ich stimme der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a> zu</label>' +
+      '<div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>' +
+      '<div class="k-msg" hidden></div><button type="submit" class="btn btn-out">Vormerken</button></form>';
+  }
+  function initVormerk() {
+    var f = pb.querySelector('.lp-vormerk');
+    if (!f) return;
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      var msg = f.querySelector('.k-msg'), btn = f.querySelector('button');
+      var d = { einheit_kennung: f.getAttribute('data-box'), email: f.querySelector('[name=email]').value,
+        datenschutz_ok: f.querySelector('[name=datenschutz_ok]').checked, website: f.querySelector('[name=website]').value };
+      btn.disabled = true;
+      fetch(API + '/api/vormerkung', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, text: j.meldung || '' }; }); })
+        .catch(function () { return { ok: false, text: 'Gerade nicht erreichbar. Bitte schreiben Sie an office@sollenau-immo.at.' }; })
+        .then(function (e) { msg.hidden = false; msg.className = 'k-msg ' + (e.ok ? 'ok' : 'fehler'); msg.textContent = e.text; btn.disabled = false; if (e.ok) f.querySelector('[name=email]').value = ''; });
+    });
   }
   function render() {
     var sel = selId ? E[selId] : null;
@@ -637,7 +676,7 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     h = '<button type="button" class="lp-back" id="lp-back">&lsaquo; Alle freien Einheiten</button>';
     h += '<div class="lp-kicker">' + hx(sel.name) + (sel.parent ? ' &middot; ' + hx(sel.parent) : '') + '</div>';
     if (a.length === 1) {
-      h += detail(a[0]);
+      h += detail(a[0], sel);
     } else if (a.length > 1) {
       h += '<h3>' + a.length + ' freie Einheiten</h3><div class="lp-list">' + a.map(function (o) { return item(o, o.url, '', ''); }).join('') + '</div>';
     } else if (freiOhne(sel)) {
@@ -645,10 +684,11 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
     } else {
       h += '<div class="lp-leer"><b>Derzeit keine freie Einheit</b>' +
         (sel.objs.length || sel.ohne ? 'In der gew&auml;hlten Kategorie ist hier nichts frei.' : 'Diese Fl&auml;che ist vermietet oder nicht im Angebot.') +
-        '</div>' + suchauftrag();
+        '</div>' + (sel.unit ? vormerkForm(sel) : '') + suchauftrag();
     }
     pb.innerHTML = h;
     initGal();
+    initVormerk();
     $('lp-back').onclick = function () { select(null, false); };
   }
   function select(id, pan) {

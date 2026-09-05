@@ -198,6 +198,12 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
 }
 @media(max-width:560px){.f-top{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* Formulare zur Belegungs-App (Anfrage, Vormerkung, Suchauftrag) */
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0}
+.k-msg{border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:14px;line-height:1.45}
+.k-msg.ok{background:#e9f7ef;color:#1e6b3a;border:1px solid #bfe6cd}
+.k-msg.fehler{background:#fdecea;color:#9b2c1f;border:1px solid #f5c2bb}
+.k-boxhinweis{background:#fff4ec;border:1px solid #f7cdb5;border-radius:10px;padding:10px 14px;margin:0 0 16px;font-size:14px}
 
 </style>
 <style>
@@ -227,6 +233,9 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   .k-side{padding-top:0}
   .anfahrt{grid-template-columns:1fr}
 }
+.k-such{margin-top:18px}
+.k-such h3{margin:0 0 6px;font-size:19px}
+.k-such .sub{margin:0 0 14px}
 
 </style>
 </head>
@@ -268,47 +277,49 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
       <div class="formcard">
         <h2>Anfrage stellen</h2>
         <p class="sub">Felder mit <span style="color:var(--o3)">*</span> sind Pflichtfelder.</p>
-        <form>
+        <form id="k-form" novalidate>
+          <input type="hidden" name="einheit_kennung" id="k-box" value="">
+          <p class="k-boxhinweis" id="k-boxhinweis" hidden>Ihre Anfrage bezieht sich auf die Einheit <b id="k-boxname"></b>.</p>
           <div class="field-row">
             <div class="field">
               <label for="k-vorname">Vorname <span class="req">*</span></label>
-              <input id="k-vorname" type="text" placeholder="Max" required>
+              <input id="k-vorname" name="vorname" type="text" placeholder="Max" required>
             </div>
             <div class="field">
               <label for="k-nachname">Nachname <span class="req">*</span></label>
-              <input id="k-nachname" type="text" placeholder="Mustermann" required>
+              <input id="k-nachname" name="nachname" type="text" placeholder="Mustermann" required>
             </div>
           </div>
           <div class="field-row">
             <div class="field">
               <label for="k-mail">E-Mail <span class="req">*</span></label>
-              <input id="k-mail" type="email" placeholder="name@firma.at" required>
+              <input id="k-mail" name="email" type="email" placeholder="name@firma.at" required>
             </div>
             <div class="field">
               <label for="k-tel">Telefon</label>
-              <input id="k-tel" type="tel" placeholder="+43 664 1234567">
+              <input id="k-tel" name="tel" type="tel" placeholder="+43 664 1234567">
             </div>
           </div>
           <div class="field">
             <label for="k-firma">Firma</label>
-            <input id="k-firma" type="text" placeholder="optional">
+            <input id="k-firma" name="firma" type="text" placeholder="optional">
           </div>
           <div class="field-row">
             <div class="field">
               <label for="k-art">Ich suche</label>
-              <select id="k-art">
-                <option>Halle</option>
-                <option>Lagerfl&auml;che</option>
-                <option>B&uuml;ro</option>
-                <option>Stellplatz oder Garage</option>
-                <option>Gastro</option>
-                <option>Wohnung</option>
-                <option>Noch unklar</option>
+              <select id="k-art" name="kategorie">
+                <option value="halle">Halle</option>
+                <option value="lager">Lagerfl&auml;che</option>
+                <option value="buero">B&uuml;ro</option>
+                <option value="stellplatz">Stellplatz oder Garage</option>
+                <option value="">Gastro</option>
+                <option value="">Wohnung</option>
+                <option value="" selected>Noch unklar</option>
               </select>
             </div>
             <div class="field">
               <label for="k-flaeche">Gew&uuml;nschte Fl&auml;che</label>
-              <select id="k-flaeche">
+              <select id="k-flaeche" name="flaeche_wunsch">
                 <option>bis 30 m&sup2;</option>
                 <option>30 bis 80 m&sup2;</option>
                 <option>80 bis 150 m&sup2;</option>
@@ -319,17 +330,19 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
           </div>
           <div class="field">
             <label for="k-ab">Gew&uuml;nschter Mietbeginn</label>
-            <input id="k-ab" type="text" placeholder="z. B. 01.11.2026 oder sofort">
+            <input id="k-ab" name="beginn_wunsch" type="text" placeholder="z. B. 01.11.2026 oder sofort">
           </div>
           <div class="field">
             <label for="k-msg">Ihre Nachricht <span class="req">*</span></label>
-            <textarea id="k-msg" placeholder="Beschreiben Sie kurz, wof&uuml;r Sie die Fl&auml;che nutzen m&ouml;chten." required></textarea>
+            <textarea id="k-msg" name="nachricht" placeholder="Beschreiben Sie kurz, wof&uuml;r Sie die Fl&auml;che nutzen m&ouml;chten." required></textarea>
             <span class="hint">Je konkreter Ihre Angaben, desto passender unsere Vorschl&auml;ge.</span>
           </div>
+          <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="check">
-            <input id="k-dsg" type="checkbox" required>
-            <label for="k-dsg">Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und verarbeitet werden. <a href="#">Datenschutzerkl&auml;rung</a></label>
+            <input id="k-dsg" name="datenschutz_ok" type="checkbox" required>
+            <label for="k-dsg">Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage gespeichert und verarbeitet werden. <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a></label>
           </div>
+          <div class="k-msg" hidden></div>
           <button type="submit" class="btn btn-pri">Anfrage senden <span class="ar">&#8599;</span></button>
         </form>
       </div>
@@ -347,6 +360,28 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
           <div class="c-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><div class="cl">Adresse</div><div class="cv">Blumauerstra&szlig;e 200A</div><div class="cs">2601 Sollenau, &Ouml;sterreich</div></div>
         </a>
+        <div class="formcard k-such" id="suchauftrag">
+          <h3>Suchauftrag</h3>
+          <p class="sub">Nichts Passendes dabei? Wir melden uns per Mail, sobald eine passende Fl&auml;che inseriert wird. Sie best&auml;tigen den Auftrag per Klick in der Mail, abmelden geht jederzeit.</p>
+          <form id="s-form" novalidate>
+            <div class="field"><label for="s-mail">E-Mail <span class="req">*</span></label><input id="s-mail" name="email" type="email" placeholder="name@firma.at" required></div>
+            <div class="field"><label for="s-name">Name</label><input id="s-name" name="name" type="text" placeholder="optional"></div>
+            <div class="field"><label for="s-art">Art der Fl&auml;che</label>
+              <select id="s-art" name="kategorie"><option value="">Alle Arten</option><option value="halle">Halle oder Werkstatt</option><option value="lager">Lager</option><option value="buero">B&uuml;ro</option><option value="stellplatz">Stellplatz oder Carport</option></select></div>
+            <div class="field-row">
+              <div class="field"><label for="s-von">Fl&auml;che ab (m&sup2;)</label><input id="s-von" name="flaeche_von" type="number" min="0" step="1" placeholder="z. B. 40"></div>
+              <div class="field"><label for="s-bis">Fl&auml;che bis (m&sup2;)</label><input id="s-bis" name="flaeche_bis" type="number" min="0" step="1" placeholder="z. B. 120"></div>
+            </div>
+            <div class="field"><label for="s-miete">Miete bis (Euro je Monat)</label><input id="s-miete" name="miete_max" type="text" placeholder="z. B. 900"></div>
+            <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="check">
+              <input id="s-dsg" name="datenschutz_ok" type="checkbox" required>
+              <label for="s-dsg">Ich stimme zu, dass meine Angaben f&uuml;r den Suchauftrag gespeichert werden. <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a></label>
+            </div>
+            <div class="k-msg" hidden></div>
+            <button type="submit" class="btn btn-out">Suchauftrag anlegen</button>
+          </form>
+        </div>
         <div class="k-hours">
           <h3>&Ouml;ffnungszeiten</h3>
           <div><span>Montag bis Donnerstag</span><b>08:00 bis 18:00</b></div>
@@ -381,6 +416,48 @@ footer{background:var(--ink);color:#fff;padding:clamp(60px,8vw,88px) 0 32px}
   </div>
 </section>
 <div style="height:clamp(60px,8vw,96px)"></div>
+<script id="k-form-js">
+(function () {
+  var API = 'https://areal200-belegung.fly.dev';
+  var q = new URLSearchParams(location.search), box = q.get('box') || '';
+  if (box && /^[A-Za-z0-9]{1,8}$/.test(box)) {
+    document.getElementById('k-box').value = box;
+    document.getElementById('k-boxname').textContent = box;
+    document.getElementById('k-boxhinweis').hidden = false;
+  }
+  function senden(form, pfad) {
+    var msg = form.querySelector('.k-msg'), btn = form.querySelector('button[type=submit]');
+    var d = {};
+    new FormData(form).forEach(function (v, k) { d[k] = v; });
+    d.datenschutz_ok = form.querySelector('[name=datenschutz_ok]').checked;
+    var sel = form.querySelector('select[name=kategorie]');
+    if (sel && !sel.value && form.id === 'k-form' && sel.options[sel.selectedIndex].text !== 'Noch unklar') {
+      d.nachricht = 'Gesucht: ' + sel.options[sel.selectedIndex].text + '\n' + (d.nachricht || '');
+    }
+    btn.disabled = true;
+    msg.hidden = true;
+    fetch(API + pfad, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, text: j.meldung || '' }; }); })
+      .catch(function () { return { ok: false, text: 'Das Formular ist gerade nicht erreichbar. Bitte schreiben Sie an office@sollenau-immo.at oder rufen Sie uns an.' }; })
+      .then(function (e) {
+        msg.hidden = false;
+        msg.className = 'k-msg ' + (e.ok ? 'ok' : 'fehler');
+        msg.textContent = e.text;
+        btn.disabled = false;
+        if (e.ok) form.reset();
+      });
+  }
+  ['k-form', 's-form'].forEach(function (id) {
+    var f = document.getElementById(id);
+    if (!f) return;
+    f.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      senden(f, id === 'k-form' ? '/api/anfrage' : '/api/suchauftrag');
+    });
+  });
+})();
+</script>
 
 <footer>
   <div class="wrap">
